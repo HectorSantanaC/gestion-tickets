@@ -1,0 +1,11 @@
+# AGENTS.md - exclusion requested
+AGENTS.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# XAMPP / PHP
+*.log
+*.error
+/tmp/
