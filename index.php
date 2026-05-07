@@ -38,7 +38,7 @@ $sidebarWidth = $config['sidebar_width'];
 
   <body class="font-body-md text-on-background overflow-x-hidden">
     <div class="flex min-h-screen">
-      <?php include 'includes/navbar.php'; ?>
+      <?php include_once 'includes/navbar.php'; ?>
       <div class="flex-1 pl-64 flex flex-col min-w-0">
         <?php include "views/{$page}.php"; ?>
       </div>

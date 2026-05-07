@@ -47,7 +47,7 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
 <!-- Content Area -->
 <div class="ml-0 flex flex-col min-w-0">
   <!-- TopAppBar -->
-  <?php include 'includes/header.php'; ?>
+  <?php include_once 'includes/header.php'; ?>
 
   <!-- Main Workspace -->
   <main class="flex-1 p-6 max-w-[1280px] mx-auto w-full">

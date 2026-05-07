@@ -2,7 +2,7 @@
 $pageTitle = 'Gestor de Incidencias - Panel';
 ?>
 <!-- TopAppBar -->
-<?php include 'includes/header.php'; ?>
+<?php include_once 'includes/header.php'; ?>
 
 <!-- Dashboard Content -->
 <main class="flex-1 p-6 max-w-[1280px] mx-auto w-full">
