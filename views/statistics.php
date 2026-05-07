@@ -4,7 +4,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
 ?>
 
 <!-- TopAppBar -->
-<?php include_once 'includes/header.php'; ?>
+<?php include_once 'includes/components/header.php'; ?>
 
 <!-- Main Content -->
 <main class="flex-1 p-6 max-w-[1600px] mx-auto w-full">

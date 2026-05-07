@@ -8,7 +8,7 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAIAUWnYnK1n
 <!-- Main Content Area -->
 <main class="flex-1 flex flex-col min-h-screen">
   <!-- TopAppBar -->
-  <?php include_once 'includes/header.php'; ?>
+  <?php include_once 'includes/components/header.php'; ?>
 
   <!-- Page Canvas -->
   <div class="flex-1 p-6 max-w-[1400px] mx-auto w-full">
