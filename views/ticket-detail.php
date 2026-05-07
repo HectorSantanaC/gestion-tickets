@@ -4,53 +4,14 @@ $showTitle = false;
 $zIndex = 40;
 $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhLXTA_nTiUUyJMkOMy4oxwaSdP_CSU76HJ8-crxgViwXP8N4fojewg2i39P1t2qNOc15eB-NH-bQxh1yU7TQvBlZa_XgIKuEKpCMjNBysR7vEHtZzKma-vJ3ksCrTPJT7CkzOI2i9pJO5Pm4AoyKk_QBaB7zLZzHzWCKgsvkvnZBDCDGodkWa1OQ6KVngCM--M7oqK1lS1WbmRDgVfSCSJg9xOM7_bzEllQlSfIli9i5JRgCwmCEh58BRViL3MqAzfaM';
 ?>
-<!-- SideNavBar -->
-<aside class="flex flex-col h-screen fixed left-0 top-0 py-margin-xl bg-surface docked h-full w-64 border-r border-outline-variant z-50">
-  <div class="px-gutter mb-margin-xl">
-    <h1 class="font-h3 text-h3 font-bold text-primary">Gestor de Incidencias</h1>
-    <p class="font-label-sm text-label-sm text-on-surface-variant">Soporte Empresarial</p>
-  </div>
-  <nav class="flex-1 space-y-margin-sm px-margin-md overflow-y-auto">
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high rounded text-on-surface-variant" href="?page=dashboard">
-      <span class="material-symbols-outlined">dashboard</span>
-      <span class="font-label-sm text-label-sm">Panel</span>
-    </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high rounded text-primary font-bold border-r-4 border-primary" href="?page=tickets">
-      <span class="material-symbols-outlined">confirmation_number</span>
-      <span class="font-label-sm text-label-sm">Incidencias</span>
-    </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high rounded text-on-surface-variant" href="?page=create-ticket">
-      <span class="material-symbols-outlined">add_circle</span>
-      <span class="font-label-sm text-label-sm">Nueva Incidencia</span>
-    </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high rounded text-on-surface-variant" href="?page=admin">
-      <span class="material-symbols-outlined">admin_panel_settings</span>
-      <span class="font-label-sm text-label-sm">Administración</span>
-    </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high rounded text-on-surface-variant" href="?page=statistics">
-      <span class="material-symbols-outlined">query_stats</span>
-      <span class="font-label-sm text-label-sm">Estadísticas</span>
-    </a>
-  </nav>
-  <div class="px-margin-md py-margin-xl mt-auto space-y-margin-sm">
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high rounded text-on-surface-variant" href="#">
-      <span class="material-symbols-outlined">settings</span>
-      <span class="font-label-sm text-label-sm">Configuración</span>
-    </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high rounded text-on-surface-variant" href="#">
-      <span class="material-symbols-outlined">logout</span>
-      <span class="font-label-sm text-label-sm">Cerrar Sesión</span>
-    </a>
-  </div>
-</aside>
 
-<!-- Content Area -->
-<div class="ml-0 flex flex-col min-w-0">
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0">
   <!-- TopAppBar -->
   <?php include_once 'includes/components/header.php'; ?>
 
   <!-- Main Workspace -->
-  <main class="flex-1 p-6 max-w-[1280px] mx-auto w-full">
+  <div class="flex-1 p-6 max-w-[1280px] mx-auto w-full">
     <!-- Ticket Header -->
     <div class="mb-margin-xl bg-surface-container-lowest p-margin-xl rounded-xl shadow-soft border border-outline-variant">
       <div class="flex items-start justify-between">
@@ -241,5 +202,5 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
         </div>
       </div>
     </div>
-  </main>
-</div>
+  </div>
+</main>
