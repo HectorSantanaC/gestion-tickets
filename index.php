@@ -1,13 +1,18 @@
 <?php
+
+declare(strict_types=1);
+
+// Load configuration
+$config = require __DIR__ . '/includes/constants.php';
+
 // Router - Entry point
-$page = $_GET['page'] ?? 'dashboard';
+$page = isset($_GET['page']) && is_string($_GET['page']) 
+  ? $_GET['page'] 
+  : $config['default_page'];
 
-// Define allowed pages
-$allowedPages = ['dashboard', 'create-ticket', 'login', 'ticket-detail', 'admin', 'tickets', 'statistics'];
-
-// Normalize page name
-if (!in_array($page, $allowedPages)) {
-  $page = 'dashboard';
+// Normalize page name (whitelist)
+if (!in_array($page, $config['allowed_pages'], true)) {
+  $page = $config['default_page'];
 }
 
 // Set currentPage for navbar highlighting
@@ -16,17 +21,11 @@ $currentPage = $page;
 // For login page, we don't include the sidebar
 $isLoginPage = ($page === 'login');
 
-$pageTitles = [
-  'dashboard' => 'Registro de incidencias - Dashboard',
-  'create-ticket' => 'Crear nuevo ticket - Servicio de asistencia',
-  'login' => 'Login - Registro de incidencias',
-  'ticket-detail' => 'Detalles del ticket - Servicio de asistencia',
-  'admin' => 'Servicio de asistencia - Administración y estadísticas',
-  'tickets' => 'Incidencias - Gestor de Incidencias',
-  'statistics' => 'Estadísticas - Gestor de Incidencias'
-];
+// Get page title
+$pageTitle = $config['page_titles'][$page] ?? $config['default_title'];
 
-$pageTitle = $pageTitles[$page] ?? 'Registro de incidencias';
+// Sidebar width for layout
+$sidebarWidth = $config['sidebar_width'];
 ?>
 <!DOCTYPE html>
 <html class="light" lang="es">
@@ -39,7 +38,7 @@ $pageTitle = $pageTitles[$page] ?? 'Registro de incidencias';
 <?php else: ?>
   <!-- Pages with sidebar -->
 
-  <body class="font-body-md text-on-background">
+  <body class="font-body-md text-on-background overflow-x-hidden">
     <div class="flex min-h-screen">
       <?php include 'includes/navbar.php'; ?>
       <div class="flex-1 pl-64 flex flex-col min-w-0">
