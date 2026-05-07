@@ -5,39 +5,39 @@ $searchPlaceholder = 'Buscar recursos...';
 $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAIAUWnYnK1nq4pZjh8G8Ujy6juO-mpljCFp15GZm7_SU0zjgp_8YlSLV0f_WkvRqv-KjK1ugH76-Oqr0BDX-2ZkxOjRxbif__KOnHxfEQq1ev5YcodMKjJvjNdCDNYtIh7Fk_Yw4FQEzfSTyEs6D-DnkZyiiVlJKdXatxmhHYdOxQ1DXvT6OcRWyO5fxxSf2CGrVOUNG9hk0tNDjqdzvNsPQcN9SI7alIonJ8BfbM80SPF-enO7_G8-tMEMk8I9hvZyIXpN9Y5uzA';
 ?>
 <!-- Sidebar Shell -->
-<aside class="flex flex-col h-screen fixed left-0 top-0 py-margin-xl bg-surface dark:bg-inverse-surface docked w-64 border-r border-outline-variant dark:border-outline shadow-sm z-40">
+<aside class="flex flex-col h-screen fixed left-0 top-0 py-margin-xl bg-surface bg-surface docked w-64 border-r border-outline-variant border-outline-variant shadow-sm z-40">
   <div class="px-6 mb-8">
-    <h1 class="font-h3 text-h3 font-bold text-primary dark:text-inverse-primary">Gestor de Incidencias</h1>
+    <h1 class="font-h3 text-h3 font-bold text-primary text-primary">Gestor de Incidencias</h1>
     <p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Soporte Empresarial</p>
   </div>
   <nav class="flex-1 px-4 space-y-1">
-    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary-container transition-all scale-98 active:scale-95 duration-200" href="?page=dashboard">
+    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=dashboard">
       <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
       Panel
     </a>
-    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary-container transition-all scale-98 active:scale-95 duration-200" href="?page=tickets">
+    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=tickets">
       <span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
       Incidencias
     </a>
-    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary-container transition-all scale-98 active:scale-95 duration-200" href="?page=create-ticket">
+    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=create-ticket">
       <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
       Nueva Incidencia
     </a>
-    <a class="flex items-center gap-3 px-4 py-3 text-primary dark:text-inverse-primary font-bold border-r-4 border-primary bg-surface-container-low dark:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=admin">
+    <a class="flex items-center gap-3 px-4 py-3 text-primary text-primary font-bold border-r-4 border-primary bg-surface-container-low bg-surface-container-low transition-all scale-98 active:scale-95 duration-200" href="?page=admin">
       <span class="material-symbols-outlined" data-icon="admin_panel_settings" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
       Administración
     </a>
-    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary-container transition-all scale-98 active:scale-95 duration-200" href="?page=statistics">
+    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=statistics">
       <span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
       Estadísticas
     </a>
   </nav>
   <div class="mt-auto px-4 border-t border-outline-variant pt-4">
-    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-all" href="#">
+    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
       <span class="material-symbols-outlined" data-icon="settings">settings</span>
       Configuración
     </a>
-    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-all" href="#">
+    <a class="flex items-center gap-3 px-4 py-3 font-body-md text-body-md text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
       <span class="material-symbols-outlined" data-icon="logout">logout</span>
       Cerrar Sesión
     </a>

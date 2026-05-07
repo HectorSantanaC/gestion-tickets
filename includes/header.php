@@ -23,7 +23,7 @@ $topNav = $_GET['top_nav'] ?? 'my-issues';
 
 function isTopNavActive($item) {
     global $topNav;
-    return $item === $topNav ? 'text-primary dark:text-inverse-primary border-b-2 border-primary py-1' : 'text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors py-1';
+    return $item === $topNav ? 'text-primary border-b-2 border-primary py-1' : 'text-on-surface-variant hover:text-primary transition-colors py-1';
 }
 
 // Search input classes based on type
@@ -37,10 +37,10 @@ $searchContainerClass = ($searchType === 'rounded')
 ?>
 
 <!-- TopAppBar -->
-<header class="flex justify-between items-center w-full px-6 py-margin-md sticky top-0 z-<?php echo $zIndex; ?> bg-surface-container-lowest dark:bg-surface-container shadow-sm">
+<header class="flex justify-between items-center w-full px-6 py-margin-md sticky top-0 z-<?php echo $zIndex; ?> bg-surface-container-lowest shadow-sm">
   <div class="flex items-center <?php echo ($searchVisible || $showTitle) ? 'flex-1' : ''; ?>">
     <?php if ($showTitle): ?>
-    <span class="font-h2 text-h2 font-black text-primary dark:text-primary-fixed"><?php echo $headerTitle; ?></span>
+    <span class="font-h2 text-h2 font-black text-primary"><?php echo $headerTitle; ?></span>
     <?php endif; ?>
     
     <?php if ($searchVisible): ?>
@@ -58,9 +58,9 @@ $searchContainerClass = ($searchType === 'rounded')
     </nav>
     <?php elseif ($showNav && $showTitle): // Si hay título, mostrar nav a la derecha del título ?>
     <nav class="hidden lg:flex items-center gap-margin-lg ml-margin-xl">
-      <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Mis Incidencias</a>
-      <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Recientes</a>
-      <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Destacadas</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Mis Incidencias</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Recientes</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Destacadas</a>
     </nav>
     <?php endif; ?>
   </div>

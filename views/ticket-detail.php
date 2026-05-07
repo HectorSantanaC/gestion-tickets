@@ -5,39 +5,39 @@ $zIndex = 40;
 $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhLXTA_nTiUUyJMkOMy4oxwaSdP_CSU76HJ8-crxgViwXP8N4fojewg2i39P1t2qNOc15eB-NH-bQxh1yU7TQvBlZa_XgIKuEKpCMjNBysR7vEHtZzKma-vJ3ksCrTPJT7CkzOI2i9pJO5Pm4AoyKk_QBaB7zLZzHzWCKgsvkvnZBDCDGodkWa1OQ6KVngCM--M7oqK1lS1WbmRDgVfSCSJg9xOM7_bzEllQlSfIli9i5JRgCwmCEh58BRViL3MqAzfaM';
 ?>
 <!-- SideNavBar -->
-<aside class="flex flex-col h-screen fixed left-0 top-0 py-margin-xl bg-surface dark:bg-inverse-surface docked h-full w-64 border-r border-outline-variant dark:border-outline z-50">
+<aside class="flex flex-col h-screen fixed left-0 top-0 py-margin-xl bg-surface bg-surface docked h-full w-64 border-r border-outline-variant border-outline-variant z-50">
   <div class="px-gutter mb-margin-xl">
-    <h1 class="font-h3 text-h3 font-bold text-primary dark:text-inverse-primary">Gestor de Incidencias</h1>
+    <h1 class="font-h3 text-h3 font-bold text-primary text-primary">Gestor de Incidencias</h1>
     <p class="font-label-sm text-label-sm text-on-surface-variant">Soporte Empresarial</p>
   </div>
   <nav class="flex-1 space-y-margin-sm px-margin-md overflow-y-auto">
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high dark:hover:bg-secondary-container rounded text-on-surface-variant dark:text-surface-variant" href="?page=dashboard">
+    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high hover:bg-surface-container-high rounded text-on-surface-variant text-on-surface-variant" href="?page=dashboard">
       <span class="material-symbols-outlined">dashboard</span>
       <span class="font-label-sm text-label-sm">Panel</span>
     </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high dark:hover:bg-secondary-container rounded text-primary dark:text-inverse-primary font-bold border-r-4 border-primary" href="?page=tickets">
+    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high hover:bg-surface-container-high rounded text-primary text-primary font-bold border-r-4 border-primary" href="?page=tickets">
       <span class="material-symbols-outlined">confirmation_number</span>
       <span class="font-label-sm text-label-sm">Incidencias</span>
     </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high dark:hover:bg-secondary-container rounded text-on-surface-variant dark:text-surface-variant" href="?page=create-ticket">
+    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high hover:bg-surface-container-high rounded text-on-surface-variant text-on-surface-variant" href="?page=create-ticket">
       <span class="material-symbols-outlined">add_circle</span>
       <span class="font-label-sm text-label-sm">Nueva Incidencia</span>
     </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high dark:hover:bg-secondary-container rounded text-on-surface-variant dark:text-surface-variant" href="?page=admin">
+    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high hover:bg-surface-container-high rounded text-on-surface-variant text-on-surface-variant" href="?page=admin">
       <span class="material-symbols-outlined">admin_panel_settings</span>
       <span class="font-label-sm text-label-sm">Administración</span>
     </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high dark:hover:bg-secondary-container rounded text-on-surface-variant dark:text-surface-variant" href="?page=statistics">
+    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high hover:bg-surface-container-high rounded text-on-surface-variant text-on-surface-variant" href="?page=statistics">
       <span class="material-symbols-outlined">query_stats</span>
       <span class="font-label-sm text-label-sm">Estadísticas</span>
     </a>
   </nav>
   <div class="px-margin-md py-margin-xl mt-auto space-y-margin-sm">
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high dark:hover:bg-secondary-container rounded text-on-surface-variant dark:text-surface-variant" href="#">
+    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high hover:bg-surface-container-high rounded text-on-surface-variant text-on-surface-variant" href="#">
       <span class="material-symbols-outlined">settings</span>
       <span class="font-label-sm text-label-sm">Configuración</span>
     </a>
-    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high dark:hover:bg-secondary-container rounded text-on-surface-variant dark:text-surface-variant" href="#">
+    <a class="flex items-center gap-margin-lg px-margin-lg py-margin-md transition-all hover:bg-surface-container-high hover:bg-surface-container-high rounded text-on-surface-variant text-on-surface-variant" href="#">
       <span class="material-symbols-outlined">logout</span>
       <span class="font-label-sm text-label-sm">Cerrar Sesión</span>
     </a>

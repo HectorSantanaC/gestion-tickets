@@ -9,3 +9,12 @@ Thumbs.db
 *.log
 *.error
 /tmp/
+
+# Node.js / npm
+package.json
+package-lock.json
+node_modules/
+
+# AI Skills
+.agents/
+skills-lock.json
