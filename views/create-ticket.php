@@ -5,40 +5,40 @@ $searchPlaceholder = 'Buscar incidencias, etiquetas o usuarios...';
 $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvmIwUBTmDyFzDPY5TJQHdIROEKVkPpphN_YGzFElSQluoc3mGGV2mHoHVbcc-bevtLixCLZVHJaInPmQtAvNnsk7YSQYdbS6BfkcYkhUnwk0SYGL0GSqWwnVzNI7297E3XJERr-I2BFicakLS0efDvoLS2ONcEcQ4-SSZO1JxnKVJtc-4M1rWpcFL1OijrxDtz6GmFIMctFjUq7odPGnAqaMkR89R5leL0CMfkq6Meg8Ft-bZcc-cHdpg_QAs8rf3Ud2K8gHLmO0';
 ?>
 <!-- SideNavBar Shell -->
-<aside class="flex flex-col h-screen fixed left-0 top-0 py-margin-xl bg-surface bg-surface docked h-full w-64 border-r border-outline-variant border-outline-variant z-40 hidden md:flex">
+<aside class="flex flex-col h-screen fixed left-0 top-0 py-margin-xl bg-surface docked h-full w-64 border-r border-outline-variant z-40 hidden md:flex">
   <div class="px-margin-lg mb-margin-xl">
-    <h1 class="font-h3 text-h3 font-bold text-primary text-primary">Gestor de Incidencias</h1>
+    <h1 class="font-h3 text-h3 font-bold text-primary">Gestor de Incidencias</h1>
     <p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Soporte Empresarial</p>
   </div>
   <nav class="flex-1 px-margin-md space-y-margin-sm">
-    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=dashboard">
+    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=dashboard">
       <span class="material-symbols-outlined">dashboard</span>
       <span class="font-label-sm text-label-sm">Panel</span>
     </a>
-    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=tickets">
+    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=tickets">
       <span class="material-symbols-outlined">confirmation_number</span>
       <span class="font-label-sm text-label-sm">Incidencias</span>
     </a>
     <!-- Active Tab: Create Ticket -->
-    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-primary text-primary font-bold border-r-4 border-primary bg-surface-container-low shadow-sm scale-98 active:scale-95 duration-200" href="?page=create-ticket">
+    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-low shadow-sm scale-98 active:scale-95 duration-200" href="?page=create-ticket">
       <span class="material-symbols-outlined">add_circle</span>
       <span class="font-label-sm text-label-sm">Nueva Incidencia</span>
     </a>
-    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=admin">
+    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=admin">
       <span class="material-symbols-outlined">admin_panel_settings</span>
       <span class="font-label-sm text-label-sm">Administración</span>
     </a>
-    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=statistics">
+    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all scale-98 active:scale-95 duration-200" href="?page=statistics">
       <span class="material-symbols-outlined">query_stats</span>
       <span class="font-label-sm text-label-sm">Estadísticas</span>
     </a>
   </nav>
   <div class="px-margin-md mt-auto pt-margin-xl border-t border-outline-variant">
-    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
       <span class="material-symbols-outlined">settings</span>
       <span class="font-label-sm text-label-sm">Configuración</span>
     </a>
-    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+    <a class="flex items-center gap-margin-md px-margin-lg py-margin-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
       <span class="material-symbols-outlined">logout</span>
       <span class="font-label-sm text-label-sm">Cerrar Sesión</span>
     </a>
