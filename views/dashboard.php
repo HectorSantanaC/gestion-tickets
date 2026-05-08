@@ -201,7 +201,7 @@ $pageTitle = 'Gestor de Incidencias - Panel';
 </main>
 
 <!-- FAB: Create New Ticket -->
-<button class="fixed bottom-10 right-10 bg-primary text-on-primary h-14 w-14 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center group">
+<a href="?page=create-ticket" class="fixed bottom-10 right-10 bg-primary text-on-primary h-14 w-14 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center group">
   <span class="material-symbols-outlined text-[28px]" data-icon="add" style="font-variation-settings: 'FILL' 0, 'wght' 600;">add</span>
   <span class="absolute right-full mr-4 bg-inverse-surface text-white px-3 py-1 rounded font-label-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Nueva Incidencia</span>
-</button>
+</a>
