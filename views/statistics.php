@@ -34,7 +34,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
         <div class="p-3 bg-secondary-container rounded-xl text-primary">
           <span class="material-symbols-outlined">timer</span>
         </div>
-        <span class="flex items-center gap-1 text-[12px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+        <span class="flex items-center gap-1 text-[12px] font-bold text-success bg-success-container px-2 py-1 rounded-full">
           <span class="material-symbols-outlined text-[14px]">arrow_downward</span> 12%
         </span>
       </div>
@@ -47,7 +47,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
         <div class="p-3 bg-secondary-container rounded-xl text-primary">
           <span class="material-symbols-outlined">reply_all</span>
         </div>
-        <span class="flex items-center gap-1 text-[12px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+        <span class="flex items-center gap-1 text-[12px] font-bold text-success bg-success-container px-2 py-1 rounded-full">
           <span class="material-symbols-outlined text-[14px]">arrow_downward</span> 8%
         </span>
       </div>
@@ -73,7 +73,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
         <div class="p-3 bg-error-container rounded-xl text-error">
           <span class="material-symbols-outlined">gavel</span>
         </div>
-        <span class="flex items-center gap-1 text-[12px] font-bold text-error bg-red-50 px-2 py-1 rounded-full">
+        <span class="flex items-center gap-1 text-[12px] font-bold text-error bg-error-container px-2 py-1 rounded-full">
           <span class="material-symbols-outlined text-[14px]">warning</span> -0.5%
         </span>
       </div>
@@ -252,7 +252,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
             </td>
             <td class="px-6 py-4">
               <span class="text-body-md font-bold text-on-surface">248</span>
-              <span class="text-meta-xs text-green-600 ml-1">+12%</span>
+              <span class="text-meta-xs text-success ml-1">+12%</span>
             </td>
             <td class="px-6 py-4">
               <div class="flex items-center gap-1">
@@ -269,7 +269,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
               </div>
             </td>
             <td class="px-6 py-4">
-              <span class="bg-green-100 text-green-800 text-[11px] font-bold px-2 py-1 rounded">EXCEPCIONAL</span>
+              <span class="bg-success-container text-success text-[11px] font-bold px-2 py-1 rounded">EXCEPCIONAL</span>
             </td>
           </tr>
           <!-- Row 2 -->
@@ -285,7 +285,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
             </td>
             <td class="px-6 py-4">
               <span class="text-body-md font-bold text-on-surface">212</span>
-              <span class="text-meta-xs text-green-600 ml-1">+5%</span>
+              <span class="text-meta-xs text-success ml-1">+5%</span>
             </td>
             <td class="px-6 py-4">
               <div class="flex items-center gap-1">
@@ -302,7 +302,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
               </div>
             </td>
             <td class="px-6 py-4">
-              <span class="bg-green-100 text-green-800 text-[11px] font-bold px-2 py-1 rounded">ALTA</span>
+              <span class="bg-success-container text-success text-[11px] font-bold px-2 py-1 rounded">ALTA</span>
             </td>
           </tr>
           <!-- Row 3 -->
@@ -335,7 +335,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
               </div>
             </td>
             <td class="px-6 py-4">
-              <span class="bg-yellow-100 text-yellow-800 text-[11px] font-bold px-2 py-1 rounded">SOBRECARGADO</span>
+              <span class="bg-warning-container text-warning text-[11px] font-bold px-2 py-1 rounded">SOBRECARGADO</span>
             </td>
           </tr>
         </tbody>

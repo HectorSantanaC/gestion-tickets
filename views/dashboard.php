@@ -12,7 +12,7 @@ $pageTitle = 'Gestor de Incidencias - Panel';
       <div>
         <p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Mis Incidencias Abiertas</p>
         <h3 class="font-h2 text-h2 font-black text-primary">24</h3>
-        <p class="font-meta-xs text-meta-xs text-green-600 mt-2 flex items-center">
+        <p class="font-meta-xs text-meta-xs text-success mt-2 flex items-center">
           <span class="material-symbols-outlined text-[14px] mr-1" data-icon="trending_down">trending_down</span>
           -12% desde la semana pasada
         </p>
@@ -53,14 +53,14 @@ $pageTitle = 'Gestor de Incidencias - Panel';
     <div class="bg-surface shadow-sm border border-outline-variant p-margin-lg rounded-xl flex items-start justify-between">
       <div>
         <p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Resueltas Hoy</p>
-        <h3 class="font-h2 text-h2 font-black text-green-600">14</h3>
-        <p class="font-meta-xs text-meta-xs text-green-600 mt-2 flex items-center">
+        <h3 class="font-h2 text-h2 font-black text-success">14</h3>
+        <p class="font-meta-xs text-meta-xs text-success mt-2 flex items-center">
           <span class="material-symbols-outlined text-[14px] mr-1" data-icon="check_circle">check_circle</span>
           92% tasa de resolución
         </p>
       </div>
-      <div class="bg-green-100 p-2 rounded-lg">
-        <span class="material-symbols-outlined text-green-700" data-icon="task_alt">task_alt</span>
+      <div class="bg-success-container p-2 rounded-lg">
+        <span class="material-symbols-outlined text-success" data-icon="task_alt">task_alt</span>
       </div>
     </div>
   </div>
@@ -114,7 +114,7 @@ $pageTitle = 'Gestor de Incidencias - Panel';
             <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant font-body-md">Infraestructura</td>
             <td class="px-6 py-4 whitespace-nowrap">
               <div class="flex items-center">
-                <span class="h-2 w-2 rounded-full bg-orange-500 mr-2"></span>
+                <span class="h-2 w-2 rounded-full bg-warning mr-2"></span>
                 <span class="font-body-md text-on-surface">En Progreso</span>
               </div>
             </td>
@@ -129,12 +129,12 @@ $pageTitle = 'Gestor de Incidencias - Panel';
               <div class="font-meta-xs text-on-surface-variant">Reportado por: Alex Chen</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">NORMAL</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-info-container text-info">NORMAL</span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant font-body-md">Gestión de Accesos</td>
             <td class="px-6 py-4 whitespace-nowrap">
               <div class="flex items-center">
-                <span class="h-2 w-2 rounded-full bg-blue-500 mr-2"></span>
+                <span class="h-2 w-2 rounded-full bg-info mr-2"></span>
                 <span class="font-body-md text-on-surface">Abierta</span>
               </div>
             </td>
@@ -149,12 +149,12 @@ $pageTitle = 'Gestor de Incidencias - Panel';
               <div class="font-meta-xs text-on-surface-variant">Reportado por: Emily Clark</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-orange-800">ALTA</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-warning-container text-warning">ALTA</span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant font-body-md">Comercio Electrónico</td>
             <td class="px-6 py-4 whitespace-nowrap">
               <div class="flex items-center">
-                <span class="h-2 w-2 rounded-full bg-orange-500 mr-2"></span>
+                <span class="h-2 w-2 rounded-full bg-warning mr-2"></span>
                 <span class="font-body-md text-on-surface">En Progreso</span>
               </div>
             </td>
@@ -169,12 +169,12 @@ $pageTitle = 'Gestor de Incidencias - Panel';
               <div class="font-meta-xs text-on-surface-variant">Reportado por: Tech Lead</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-gray-100 text-gray-600">BAJA</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-neutral-container text-neutral">BAJA</span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-on-surface-variant font-body-md">API Backend</td>
             <td class="px-6 py-4 whitespace-nowrap">
               <div class="flex items-center">
-                <span class="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                <span class="h-2 w-2 rounded-full bg-success mr-2"></span>
                 <span class="font-body-md text-on-surface">Resuelta</span>
               </div>
             </td>
