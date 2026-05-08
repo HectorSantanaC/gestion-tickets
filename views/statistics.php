@@ -31,9 +31,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
     <!-- KPI Card 1 -->
     <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant group hover:shadow-md transition-shadow">
       <div class="flex justify-between items-start mb-4">
-        <div class="p-3 bg-secondary-container rounded-xl text-primary">
-          <span class="material-symbols-outlined">timer</span>
-        </div>
+        <span class="p-2 bg-secondary-container text-on-secondary-container rounded-lg material-symbols-outlined text-[20px]">timer</span>
         <span class="flex items-center gap-1 text-[12px] font-bold text-success bg-success-container px-2 py-1 rounded-full">
           <span class="material-symbols-outlined text-[14px]">arrow_downward</span> 12%
         </span>
@@ -44,9 +42,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
     <!-- KPI Card 2 -->
     <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant group hover:shadow-md transition-shadow">
       <div class="flex justify-between items-start mb-4">
-        <div class="p-3 bg-secondary-container rounded-xl text-primary">
-          <span class="material-symbols-outlined">reply_all</span>
-        </div>
+        <span class="p-2 bg-secondary-container text-on-secondary-container rounded-lg material-symbols-outlined text-[20px]">reply_all</span>
         <span class="flex items-center gap-1 text-[12px] font-bold text-success bg-success-container px-2 py-1 rounded-full">
           <span class="material-symbols-outlined text-[14px]">arrow_downward</span> 8%
         </span>
@@ -57,9 +53,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
     <!-- KPI Card 3 -->
     <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant group hover:shadow-md transition-shadow">
       <div class="flex justify-between items-start mb-4">
-        <div class="p-3 bg-secondary-container rounded-xl text-primary">
-          <span class="material-symbols-outlined">sentiment_satisfied</span>
-        </div>
+        <span class="p-2 bg-secondary-container text-on-secondary-container rounded-lg material-symbols-outlined text-[20px]">sentiment_satisfied</span>
         <span class="flex items-center gap-1 text-[12px] font-bold text-primary bg-primary-fixed px-2 py-1 rounded-full">
           <span class="material-symbols-outlined text-[14px]">trending_up</span> 2%
         </span>
@@ -70,9 +64,7 @@ $searchPlaceholder = 'Buscar insights, métricas o reportes...';
     <!-- KPI Card 4 -->
     <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant group hover:shadow-md transition-shadow">
       <div class="flex justify-between items-start mb-4">
-        <div class="p-3 bg-error-container rounded-xl text-error">
-          <span class="material-symbols-outlined">gavel</span>
-        </div>
+        <span class="p-2 bg-error-container text-on-error-container rounded-lg material-symbols-outlined text-[20px]">gavel</span>
         <span class="flex items-center gap-1 text-[12px] font-bold text-error bg-error-container px-2 py-1 rounded-full">
           <span class="material-symbols-outlined text-[14px]">warning</span> -0.5%
         </span>

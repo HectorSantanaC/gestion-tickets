@@ -17,9 +17,7 @@ $pageTitle = 'Gestor de Incidencias - Panel';
           -12% desde la semana pasada
         </p>
       </div>
-      <div class="bg-primary-container p-2 rounded-lg">
-        <span class="material-symbols-outlined text-on-primary-fixed" data-icon="assignment">assignment</span>
-      </div>
+      <span class="p-2 bg-primary-container text-on-primary-container rounded-lg material-symbols-outlined text-[20px]" data-icon="assignment">assignment</span>
     </div>
 
     <div class="bg-surface shadow-sm border border-outline-variant p-margin-lg rounded-xl flex items-start justify-between">
@@ -31,23 +29,19 @@ $pageTitle = 'Gestor de Incidencias - Panel';
           Tiempo prom.: 4.2h
         </p>
       </div>
-      <div class="bg-secondary-container p-2 rounded-lg">
-        <span class="material-symbols-outlined text-on-secondary-container" data-icon="hourglass_empty">hourglass_empty</span>
-      </div>
+      <span class="p-2 bg-secondary-container text-on-secondary-container rounded-lg material-symbols-outlined text-[20px]" data-icon="hourglass_empty">hourglass_empty</span>
     </div>
 
-    <div class="bg-error-container shadow-sm border border-error/20 p-margin-lg rounded-xl flex items-start justify-between">
+    <div class="bg-surface shadow-sm border border-outline-variant p-margin-lg rounded-xl flex items-start justify-between">
       <div>
-        <p class="font-label-sm text-label-sm text-on-error-container mb-1">Incidentes Urgentes</p>
+        <p class="font-label-sm text-label-sm text-error mb-1">Incidentes Urgentes</p>
         <h3 class="font-h2 text-h2 font-black text-error">03</h3>
         <p class="font-meta-xs text-meta-xs text-error mt-2 flex items-center">
           <span class="material-symbols-outlined text-[14px] mr-1" data-icon="warning">warning</span>
           Se requiere acción inmediata
         </p>
       </div>
-      <div class="bg-error p-2 rounded-lg">
-        <span class="material-symbols-outlined text-on-error" data-icon="priority_high">priority_high</span>
-      </div>
+      <span class="p-2 bg-error text-on-error rounded-lg material-symbols-outlined text-[20px]" data-icon="priority_high">priority_high</span>
     </div>
 
     <div class="bg-surface shadow-sm border border-outline-variant p-margin-lg rounded-xl flex items-start justify-between">
@@ -59,9 +53,7 @@ $pageTitle = 'Gestor de Incidencias - Panel';
           92% tasa de resolución
         </p>
       </div>
-      <div class="bg-success-container p-2 rounded-lg">
-        <span class="material-symbols-outlined text-success" data-icon="task_alt">task_alt</span>
-      </div>
+      <span class="p-2 bg-success-container text-on-success-container rounded-lg material-symbols-outlined text-[20px]" data-icon="task_alt">task_alt</span>
     </div>
   </div>
 
