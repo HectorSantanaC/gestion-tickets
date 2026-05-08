@@ -54,7 +54,22 @@
           "on-surface-variant": "#444653",
           "error-container": "#ffdad6",
           "surface-bright": "#f7f9fb",
-          "on-secondary-fixed": "#0b1c30"
+          "on-secondary-fixed": "#0b1c30",
+          "success": "#16a34a",
+          "success-container": "#dcfce7",
+          "on-success": "#ffffff",
+          "on-success-container": "#14532d",
+          "warning": "#ca8a04",
+          "warning-container": "#fef9c3",
+          "on-warning": "#ffffff",
+          "on-warning-container": "#713f12",
+          "info": "#2563eb",
+          "info-container": "#dbeafe",
+          "on-info": "#ffffff",
+          "on-info-container": "#1e3a8a",
+          "neutral": "#6b7280",
+          "neutral-container": "#f3f4f6",
+          "on-neutral": "#ffffff"
         },
         "borderRadius": {
           "DEFAULT": "0.25rem",
