@@ -277,7 +277,7 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAIAUWnYnK1n
             </li>
             <li class="p-3 bg-surface border border-outline-variant rounded-lg flex items-center justify-between group hover:border-primary transition-all cursor-pointer">
               <div class="flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                <div class="w-2 h-2 rounded-full bg-success"></div>
                 <span class="font-body-md text-body-md text-on-surface">Consulta General</span>
               </div>
               <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">edit</span>

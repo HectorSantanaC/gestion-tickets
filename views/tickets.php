@@ -158,7 +158,7 @@ $searchPlaceholder = 'Buscar incidencias, etiquetas o usuarios...';
             </div>
           </td>
           <td class="px-margin-lg py-4">
-            <span class="px-margin-md py-1 rounded-full bg-green-100 text-green-800 font-label-sm text-label-sm">Cerrado</span>
+            <span class="px-margin-md py-1 rounded-full bg-success-container text-success font-label-sm text-label-sm">Cerrado</span>
           </td>
           <td class="px-margin-lg py-4">
             <span class="px-margin-md py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Baja</span>
