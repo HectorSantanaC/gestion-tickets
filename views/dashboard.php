@@ -175,21 +175,27 @@ $pageTitle = 'Gestor de Incidencias - Panel';
         </tbody>
       </table>
     </div>
+  </div>
 
-    <!-- Pagination Footer -->
-    <div class="p-margin-lg border-t border-outline-variant flex items-center justify-between bg-surface-container-low">
-      <p class="font-meta-xs text-meta-xs text-on-surface-variant">Mostrando 1 a 4 de 124 incidencias</p>
-      <div class="flex space-x-2">
-        <button class="p-2 border border-outline-variant rounded hover:bg-surface-container transition-colors">
-          <span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
-        </button>
-        <button class="p-2 border border-outline-variant rounded bg-primary text-white">1</button>
-        <button class="p-2 border border-outline-variant rounded hover:bg-surface-container transition-colors">2</button>
-        <button class="p-2 border border-outline-variant rounded hover:bg-surface-container transition-colors">3</button>
-        <button class="p-2 border border-outline-variant rounded hover:bg-surface-container transition-colors">
-          <span class="material-symbols-outlined text-[20px]" data-icon="chevron_right">chevron_right</span>
-        </button>
-      </div>
+  <!-- Pagination Footer -->
+  <div class="flex items-center justify-between mt-margin-xl">
+    <span class="font-body-md text-body-md text-on-surface-variant">Mostrando 1 a 4 de 124 incidencias</span>
+    <div class="flex items-center gap-margin-sm">
+      <button class="px-margin-md py-margin-sm border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled>
+        Anterior
+      </button>
+      <button class="px-margin-md py-margin-sm bg-primary text-on-primary rounded-lg font-body-md text-body-md hover:bg-primary-container transition-colors">
+        1
+      </button>
+      <button class="px-margin-md py-margin-sm border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors">
+        2
+      </button>
+      <button class="px-margin-md py-margin-sm border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors">
+        3
+      </button>
+      <button class="px-margin-md py-margin-sm border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors">
+        Siguiente
+      </button>
     </div>
   </div>
 </main>
