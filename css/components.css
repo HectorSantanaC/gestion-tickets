@@ -1,13 +1,101 @@
 /* Component-specific styles */
-/* Add custom component styles here as needed */
 
-/* Example component styles placeholder */
-/* 
-.form-input-custom {
-    transition: all 0.2s ease;
+/* ============================================
+   BADGES DE PRIORIDAD
+   Uso: <span class="badge-priority-urgent">URGENTE</span>
+   ============================================ */
+.badge-priority-urgent {
+  @apply bg-error-container text-error;
 }
 
-.card-hover:hover {
-    transform: translateY(-2px);
+.badge-priority-high {
+  @apply bg-warning-container text-warning;
 }
-*/
+
+.badge-priority-normal {
+  @apply bg-info-container text-info;
+}
+
+.badge-priority-low {
+  @apply bg-neutral-container text-neutral;
+}
+
+/* ============================================
+   BADGES DE ESTADO (texto)
+   Uso: <span class="badge-status-open">Abierta</span>
+   ============================================ */
+.badge-status-open {
+  @apply bg-info text-on-info;
+}
+
+.badge-status-progress {
+  @apply bg-warning text-on-warning;
+}
+
+.badge-status-resolved {
+  @apply bg-success text-on-success;
+}
+
+.badge-status-closed {
+  @apply bg-neutral text-on-neutral;
+}
+
+/* ============================================
+   INDICADORES DE ESTADO (puntos)
+   Uso: <span class="status-dot status-dot-open"></span>
+   ============================================ */
+.status-dot {
+  @apply h-2 w-2 rounded-full;
+}
+
+.status-dot-open {
+  @apply bg-info;
+}
+
+.status-dot-progress {
+  @apply bg-warning;
+}
+
+.status-dot-resolved {
+  @apply bg-success;
+}
+
+.status-dot-closed {
+  @apply bg-neutral;
+}
+
+/* ============================================
+   UTILIDADES DE TEXTO
+   Para usar con tokens de estado
+   ============================================ */
+.text-success {
+  @apply text-success;
+}
+
+.text-warning {
+  @apply text-warning;
+}
+
+.text-info {
+  @apply text-info;
+}
+
+.text-neutral {
+  @apply text-neutral;
+}
+
+.bg-success-container {
+  @apply bg-success-container;
+}
+
+.bg-warning-container {
+  @apply bg-warning-container;
+}
+
+.bg-info-container {
+  @apply bg-info-container;
+}
+
+.bg-neutral-container {
+  @apply bg-neutral-container;
+}
