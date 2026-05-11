@@ -1,5 +1,12 @@
 <?php
 
+$uri = $_SERVER['REQUEST_URI'] ?? '/';
+$apiPath = str_replace('/gestion-tickets', '', $uri);
+if (strpos($apiPath, '/api/') === 0) {
+    require __DIR__ . '/api/index.php';
+    exit;
+}
+
 // Load configuration
 $config = require __DIR__ . '/includes/config/constants.php';
 

@@ -8,14 +8,15 @@ require_once __DIR__ . '/helpers/pagination.php';
 require_once __DIR__ . '/helpers/validator.php';
 require_once __DIR__ . '/../includes/config/db.php';
 
-$uri = $_SERVER['REQUEST_URI'];
-$basePath = '/api/';
+$uri = $_SERVER['REQUEST_URI'] ?? '/';
+$basePath = str_replace('/gestion-tickets', '', $uri);
+$apiPath = '/api/';
 
-if (strpos($uri, $basePath) !== 0) {
+if (strpos($basePath, $apiPath) !== 0) {
     sendResponse(jsonError('Not Found', 404));
 }
 
-$path = substr($uri, strlen($basePath));
+$path = substr($basePath, strlen($apiPath));
 $segments = explode('?', $path);
 $resource = $segments[0];
 $resource = trim($resource, '/');
