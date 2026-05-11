@@ -57,7 +57,6 @@ $db->exec("
         id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
         name VARCHAR(100) NOT NULL,
         description TEXT,
-        sort_order INTEGER NOT NULL DEFAULT 0,
         created_at TIMESTAMP NOT NULL DEFAULT NOW(),
         updated_at TIMESTAMP NOT NULL DEFAULT NOW()
     )
@@ -171,26 +170,25 @@ echo "    - 13 indexes created\n\n";
 echo "[5/5] Seeding data...\n";
 
 $categories = [
-    ['name' => 'Hardware', 'description' => 'Problemas con equipos fisicos y componentes', 'sort_order' => 1],
-    ['name' => 'Software', 'description' => 'Errores y fallos en aplicaciones', 'sort_order' => 2],
-    ['name' => 'Red', 'description' => 'Problemas de conectividad y red', 'sort_order' => 3],
-    ['name' => 'Acceso a Cuentas', 'description' => 'Solicitudes de acceso y permisos', 'sort_order' => 4],
-    ['name' => 'Facturacion', 'description' => 'Problemas relacionados con facturacion y pagos', 'sort_order' => 5],
-    ['name' => 'Infraestructura Critica', 'description' => 'Incidencias en sistemas criticos de infraestructura', 'sort_order' => 6],
-    ['name' => 'Errores de Software', 'description' => 'Bugs y errores en aplicaciones', 'sort_order' => 7],
-    ['name' => 'Solicitudes de Acceso', 'description' => 'Peticiones de acceso a sistemas y recursos', 'sort_order' => 8],
-    ['name' => 'Problemas de Red', 'description' => 'Fallos de conectividad y red', 'sort_order' => 9],
-    ['name' => 'Consulta General', 'description' => 'Consultas y preguntas generales', 'sort_order' => 10],
+    ['name' => 'Hardware', 'description' => 'Problemas con equipos fisicos y componentes'],
+    ['name' => 'Software', 'description' => 'Errores y fallos en aplicaciones'],
+    ['name' => 'Red', 'description' => 'Problemas de conectividad y red'],
+    ['name' => 'Acceso a Cuentas', 'description' => 'Solicitudes de acceso y permisos'],
+    ['name' => 'Facturacion', 'description' => 'Problemas relacionados con facturacion y pagos'],
+    ['name' => 'Infraestructura Critica', 'description' => 'Incidencias en sistemas criticos de infraestructura'],
+    ['name' => 'Errores de Software', 'description' => 'Bugs y errores en aplicaciones'],
+    ['name' => 'Solicitudes de Acceso', 'description' => 'Peticiones de acceso a sistemas y recursos'],
+    ['name' => 'Problemas de Red', 'description' => 'Fallos de conectividad y red'],
+    ['name' => 'Consulta General', 'description' => 'Consultas y preguntas generales'],
 ];
 
 $insertCategory = $db->prepare(
-    'INSERT INTO categories (name, description, sort_order) VALUES (:name, :desc, :order)'
+    'INSERT INTO categories (name, description) VALUES (:name, :desc)'
 );
 foreach ($categories as $cat) {
     $insertCategory->execute([
         ':name' => $cat['name'],
         ':desc' => $cat['description'],
-        ':order' => $cat['sort_order'],
     ]);
 }
 echo "    - 10 categories seeded\n";
