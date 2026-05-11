@@ -22,7 +22,6 @@ $db->exec('DROP TABLE IF EXISTS tickets CASCADE');
 $db->exec('DROP TABLE IF EXISTS categories CASCADE');
 $db->exec('DROP TABLE IF EXISTS tags CASCADE');
 $db->exec('DROP TABLE IF EXISTS ticket_number_sequences CASCADE');
-$db->exec('DROP TABLE IF EXISTS migrations_log CASCADE');
 $db->exec('DROP TYPE IF EXISTS ticket_status CASCADE');
 $db->exec('DROP TYPE IF EXISTS ticket_priority CASCADE');
 
@@ -58,7 +57,6 @@ $db->exec("
         id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
         name VARCHAR(100) NOT NULL,
         description TEXT,
-        color VARCHAR(7) NOT NULL DEFAULT '#757575',
         sort_order INTEGER NOT NULL DEFAULT 0,
         created_at TIMESTAMP NOT NULL DEFAULT NOW(),
         updated_at TIMESTAMP NOT NULL DEFAULT NOW()
@@ -70,7 +68,6 @@ $db->exec("
     CREATE TABLE tags (
         id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
         name VARCHAR(50) NOT NULL UNIQUE,
-        color VARCHAR(7) NOT NULL DEFAULT '#757575',
         created_at TIMESTAMP NOT NULL DEFAULT NOW()
     )
 ");
@@ -151,16 +148,7 @@ $db->exec("
         PRIMARY KEY (ticket_id, tag_id)
     )
 ");
-echo "    - ticket_tags created\n";
-
-$db->exec("
-    CREATE TABLE migrations_log (
-        id SERIAL PRIMARY KEY,
-        migration_name VARCHAR(255) NOT NULL,
-        applied_at TIMESTAMP NOT NULL DEFAULT NOW()
-    )
-");
-echo "    - migrations_log created\n\n";
+echo "    - ticket_tags created\n\n";
 
 echo "[4/5] Creating indexes...\n";
 
@@ -183,45 +171,44 @@ echo "    - 13 indexes created\n\n";
 echo "[5/5] Seeding data...\n";
 
 $categories = [
-    ['name' => 'Hardware', 'description' => 'Problemas con equipos fisicos y componentes', 'color' => '#ef4444', 'sort_order' => 1],
-    ['name' => 'Software', 'description' => 'Errores y fallos en aplicaciones', 'color' => '#f59e0b', 'sort_order' => 2],
-    ['name' => 'Red', 'description' => 'Problemas de conectividad y red', 'color' => '#3b82f6', 'sort_order' => 3],
-    ['name' => 'Acceso a Cuentas', 'description' => 'Solicitudes de acceso y permisos', 'color' => '#8b5cf6', 'sort_order' => 4],
-    ['name' => 'Facturacion', 'description' => ' Problemas relacionados con facturacion y pagos', 'color' => '#10b981', 'sort_order' => 5],
-    ['name' => 'Infraestructura Critica', 'description' => 'Incidencias en sistemas criticos de infraestructura', 'color' => '#ef4444', 'sort_order' => 6],
-    ['name' => 'Errores de Software', 'description' => 'Bugs y errores en aplicaciones', 'color' => '#f59e0b', 'sort_order' => 7],
-    ['name' => 'Solicitudes de Acceso', 'description' => 'Peticiones de acceso a sistemas y recursos', 'color' => '#8b5cf6', 'sort_order' => 8],
-    ['name' => 'Problemas de Red', 'description' => ' Fallos de conectividad y red', 'color' => '#3b82f6', 'sort_order' => 9],
-    ['name' => 'Consulta General', 'description' => ' Consultas y preguntas generales', 'color' => '#6b7280', 'sort_order' => 10],
+    ['name' => 'Hardware', 'description' => 'Problemas con equipos fisicos y componentes', 'sort_order' => 1],
+    ['name' => 'Software', 'description' => 'Errores y fallos en aplicaciones', 'sort_order' => 2],
+    ['name' => 'Red', 'description' => 'Problemas de conectividad y red', 'sort_order' => 3],
+    ['name' => 'Acceso a Cuentas', 'description' => 'Solicitudes de acceso y permisos', 'sort_order' => 4],
+    ['name' => 'Facturacion', 'description' => 'Problemas relacionados con facturacion y pagos', 'sort_order' => 5],
+    ['name' => 'Infraestructura Critica', 'description' => 'Incidencias en sistemas criticos de infraestructura', 'sort_order' => 6],
+    ['name' => 'Errores de Software', 'description' => 'Bugs y errores en aplicaciones', 'sort_order' => 7],
+    ['name' => 'Solicitudes de Acceso', 'description' => 'Peticiones de acceso a sistemas y recursos', 'sort_order' => 8],
+    ['name' => 'Problemas de Red', 'description' => 'Fallos de conectividad y red', 'sort_order' => 9],
+    ['name' => 'Consulta General', 'description' => 'Consultas y preguntas generales', 'sort_order' => 10],
 ];
 
 $insertCategory = $db->prepare(
-    'INSERT INTO categories (name, description, color, sort_order) VALUES (:name, :desc, :color, :order)'
+    'INSERT INTO categories (name, description, sort_order) VALUES (:name, :desc, :order)'
 );
 foreach ($categories as $cat) {
     $insertCategory->execute([
         ':name' => $cat['name'],
         ':desc' => $cat['description'],
-        ':color' => $cat['color'],
         ':order' => $cat['sort_order'],
     ]);
 }
 echo "    - 10 categories seeded\n";
 
 $tags = [
-    ['name' => 'Postgres', 'color' => '#336791'],
-    ['name' => 'Latency', 'color' => '#ef4444'],
-    ['name' => 'APAC', 'color' => '#f59e0b'],
-    ['name' => 'Backend', 'color' => '#3b82f6'],
-    ['name' => 'DB', 'color' => '#10b981'],
-    ['name' => 'Network', 'color' => '#8b5cf6'],
-    ['name' => 'Security', 'color' => '#ef4444'],
-    ['name' => 'API', 'color' => '#06b6d4'],
+    ['name' => 'Postgres'],
+    ['name' => 'Latency'],
+    ['name' => 'APAC'],
+    ['name' => 'Backend'],
+    ['name' => 'DB'],
+    ['name' => 'Network'],
+    ['name' => 'Security'],
+    ['name' => 'API'],
 ];
 
-$insertTag = $db->prepare('INSERT INTO tags (name, color) VALUES (:name, :color)');
+$insertTag = $db->prepare('INSERT INTO tags (name) VALUES (:name)');
 foreach ($tags as $tag) {
-    $insertTag->execute([':name' => $tag['name'], ':color' => $tag['color']]);
+    $insertTag->execute([':name' => $tag['name']]);
 }
 echo "    - 8 tags seeded\n";
 
@@ -240,15 +227,13 @@ foreach ($sequences as $seq) {
 }
 echo "    - 4 sequences seeded\n\n";
 
-$db->exec("INSERT INTO migrations_log (migration_name) VALUES ('install')");
-
 echo "=== Database installed successfully! ===\n\n";
 
 echo "Tables created:\n";
 $tables = $db->query("
     SELECT table_name
     FROM information_schema.tables
-    WHERE table_schema = 'public' AND table_name != 'migrations_log'
+    WHERE table_schema = 'public'
     ORDER BY CASE table_name
         WHEN 'categories' THEN 1
         WHEN 'tags' THEN 2
