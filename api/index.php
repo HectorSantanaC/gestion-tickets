@@ -13,7 +13,7 @@ $basePath = str_replace('/gestion-tickets', '', $uri);
 $apiPath = '/api/';
 
 if (strpos($basePath, $apiPath) !== 0) {
-    sendResponse(jsonError('Not Found', 404));
+    sendResponse(jsonError('Recurso no encontrado'), 404);
 }
 
 $path = substr($basePath, strlen($apiPath));
@@ -52,10 +52,18 @@ if ($resource === '' || $resource === 'index.php') {
     ]);
 }
 
+if (preg_match('#^tickets/([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})/(comments|attachments)$#', $resource, $matches)) {
+    $ticketId = $matches[1];
+    $subResource = $matches[2];
+    $_GET['ticket_id'] = $ticketId;
+    require_once __DIR__ . '/tickets_' . $subResource . '.php';
+    exit;
+}
+
 $resourceFile = __DIR__ . '/' . $resource . '.php';
 
 if (!file_exists($resourceFile)) {
-    sendResponse(jsonError('Not Found', 404));
+    sendResponse(jsonError('Recurso no encontrado'), 404);
 }
 
 require_once $resourceFile;
