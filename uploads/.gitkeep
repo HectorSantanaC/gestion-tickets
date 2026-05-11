@@ -1,0 +1,4 @@
+# This directory stores uploaded file attachments
+# Files are organized by ticket ID: uploads/{ticket_id}/
+# Supported formats: PNG, JPG, JPEG, PDF
+# Max file size: 10MB
