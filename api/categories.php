@@ -11,7 +11,7 @@ if ($method === 'GET') {
 
     if ($id) {
         if (!validateUuid($id)) {
-            sendResponse(jsonError('Invalid category ID'), 400);
+            sendResponse(jsonError('ID de categoría inválido'), 400);
         }
 
         $stmt = $db->prepare('SELECT * FROM categories WHERE id = :id');
@@ -19,7 +19,7 @@ if ($method === 'GET') {
         $category = $stmt->fetch();
 
         if (!$category) {
-            sendResponse(jsonError('Category not found'), 404);
+            sendResponse(jsonError('Categoría no encontrada'), 404);
         }
 
         sendResponse(jsonSuccess($category));
@@ -34,12 +34,12 @@ if ($method === 'GET') {
 if ($method === 'POST') {
     $missing = validateRequired($input, ['name']);
     if ($missing) {
-        sendResponse(jsonError('Missing required fields: ' . implode(', ', $missing)), 400);
+        sendResponse(jsonError('Campos requeridos faltantes: ' . implode(', ', $missing)), 400);
     }
 
     $name = trim($input['name']);
     if (strlen($name) > 100) {
-        sendResponse(jsonError('Name must be 100 characters or less'), 400);
+        sendResponse(jsonError('El nombre debe tener 100 caracteres o menos'), 400);
     }
 
     $description = trim($input['description'] ?? '');
@@ -47,7 +47,7 @@ if ($method === 'POST') {
     $check = $db->prepare('SELECT id FROM categories WHERE LOWER(name) = LOWER(:name)');
     $check->execute([':name' => $name]);
     if ($check->fetch()) {
-        sendResponse(jsonError('A category with this name already exists'), 400);
+        sendResponse(jsonError('Ya existe una categoría con este nombre'), 400);
     }
 
     $stmt = $db->prepare(
@@ -62,27 +62,27 @@ if ($method === 'POST') {
 if ($method === 'PUT') {
     $id = $_GET['id'] ?? null;
     if (!$id) {
-        sendResponse(jsonError('Missing category ID'), 400);
+        sendResponse(jsonError('Falta el ID de la categoría'), 400);
     }
 
     if (!validateUuid($id)) {
-        sendResponse(jsonError('Invalid category ID'), 400);
+        sendResponse(jsonError('ID de categoría inválido'), 400);
     }
 
     $check = $db->prepare('SELECT id FROM categories WHERE id = :id');
     $check->execute([':id' => $id]);
     if (!$check->fetch()) {
-        sendResponse(jsonError('Category not found'), 404);
+        sendResponse(jsonError('Categoría no encontrada'), 404);
     }
 
     $missing = validateRequired($input, ['name']);
     if ($missing) {
-        sendResponse(jsonError('Missing required fields: ' . implode(', ', $missing)), 400);
+        sendResponse(jsonError('Campos requeridos faltantes: ' . implode(', ', $missing)), 400);
     }
 
     $name = trim($input['name']);
     if (strlen($name) > 100) {
-        sendResponse(jsonError('Name must be 100 characters or less'), 400);
+        sendResponse(jsonError('El nombre debe tener 100 caracteres o menos'), 400);
     }
 
     $description = trim($input['description'] ?? '');
@@ -90,7 +90,7 @@ if ($method === 'PUT') {
     $checkName = $db->prepare('SELECT id FROM categories WHERE LOWER(name) = LOWER(:name) AND id != :id');
     $checkName->execute([':name' => $name, ':id' => $id]);
     if ($checkName->fetch()) {
-        sendResponse(jsonError('A category with this name already exists'), 400);
+        sendResponse(jsonError('Ya existe una categoría con este nombre'), 400);
     }
 
     $stmt = $db->prepare(
@@ -105,23 +105,23 @@ if ($method === 'PUT') {
 if ($method === 'DELETE') {
     $id = $_GET['id'] ?? null;
     if (!$id) {
-        sendResponse(jsonError('Missing category ID'), 400);
+        sendResponse(jsonError('ID de categoría requerido'), 400);
     }
 
     if (!validateUuid($id)) {
-        sendResponse(jsonError('Invalid category ID'), 400);
+        sendResponse(jsonError('ID de categoría inválido'), 400);
     }
 
     $check = $db->prepare('SELECT id FROM categories WHERE id = :id');
     $check->execute([':id' => $id]);
     if (!$check->fetch()) {
-        sendResponse(jsonError('Category not found'), 404);
+        sendResponse(jsonError('Categoría no encontrada'), 404);
     }
 
-    $used = $db->prepare('SELECT id FROM tickets WHERE category_id = :id LIMIT 1');
+    $used = $db->prepare('SELECT 1 FROM tickets WHERE category_id = :id LIMIT 1');
     $used->execute([':id' => $id]);
     if ($used->fetch()) {
-        sendResponse(jsonError('Cannot delete category that is assigned to tickets'), 400);
+        sendResponse(jsonError('No se puede eliminar una categoría asignada a tickets'), 400);
     }
 
     $db->prepare('DELETE FROM categories WHERE id = :id')->execute([':id' => $id]);
@@ -130,4 +130,4 @@ if ($method === 'DELETE') {
     exit;
 }
 
-sendResponse(jsonError('Method not allowed'), 405);
+sendResponse(jsonError('Método no permitido'), 405);
