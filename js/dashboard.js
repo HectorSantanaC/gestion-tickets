@@ -74,7 +74,7 @@ async function loadMetrics() {
     const data = await response.json();
     const tickets = data.data;
 
-    const abiertas = tickets.filter(t => t.status === 'nueva').length;
+    const abiertas = tickets.filter(t => t.status === 'abierta').length;
     const pendientes = tickets.filter(t => t.status === 'pendiente_verificacion').length;
     const urgentes = tickets.filter(t => t.priority === 'urgente').length;
 
