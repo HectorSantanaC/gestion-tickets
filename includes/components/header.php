@@ -9,6 +9,7 @@
 // - $profileImage: URL for profile image
 // - $zIndex: z-index for header (default: 50)
 // - $topNav: active top navigation item
+// - $extraScripts: additional script tags to include
 
 $headerTitle = $headerTitle ?? 'Servicio de Asistencia';
 $showTitle = $showTitle ?? false; // Mostrar título grande a la izquierda
@@ -18,6 +19,7 @@ $searchPlaceholder = $searchPlaceholder ?? 'Buscar incidencias, etiquetas o usua
 $searchVisible = $searchVisible ?? true;
 $profileImage = $profileImage ?? 'https://lh3.googleusercontent.com/aida-public/AB6AXuCAVqFxa2siyHif6RdnWXrhSalsh1Mxujt2M56nlDYWQ-N8TnGx9DcGbGzgf4y5uK-dC20UZbL94J-ybb3SeGtiPAeff5scXmHM-yCI0BkrZw8TI0_uSOgSzFdp3_-zTJIcoqYWmPH98T9MHYTltx9c8Ak10Yph_39LS4wUN0E8uNBZkx6JmYBOOoM1f-grFInWZcDXK8C0jSs1mmX9MyfFL40W90wmJTomX6Z3TP46MI_9ocUH3n-l3Uhr-S1tsOq3fue4j1jHH7c';
 $zIndex = $zIndex ?? 50;
+$extraScripts = $extraScripts ?? '';
 
 $topNav = $_GET['top_nav'] ?? 'my-issues';
 
@@ -74,3 +76,6 @@ $searchContainerClass = ($searchType === 'rounded')
     <img alt="User Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="<?php echo $profileImage; ?>" />
   </div>
 </header>
+<?php if ($extraScripts): ?>
+<?php echo $extraScripts; ?>
+<?php endif; ?>
