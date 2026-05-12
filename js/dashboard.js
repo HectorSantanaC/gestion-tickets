@@ -1,62 +1,16 @@
-const API_BASE = '/gestion-tickets/api';
-
 let currentPage = 1;
 let currentStatus = '';
 const perPage = 10;
 let totalTickets = 0;
 
-function getStatusLabel(status) {
-    const labels = {
-        'nueva': 'Abierta',
-        'en_progreso': 'En Progreso',
-        'pendiente_verificacion': 'Pendiente de Verificación',
-        'resuelta': 'Resuelta',
-        'cerrada': 'Cerrada'
-    };
-    return labels[status] || status;
-}
-
-function getPriorityBadge(priority) {
-    const configs = {
-        'urgente': { bg: 'bg-error-container', text: 'text-error', label: 'URGENTE' },
-        'alta': { bg: 'bg-warning-container', text: 'text-warning', label: 'ALTA' },
-        'normal': { bg: 'bg-info-container', text: 'text-info', label: 'NORMAL' },
-        'baja': { bg: 'bg-neutral-container', text: 'text-neutral', label: 'BAJA' }
-    };
-    const c = configs[priority] || configs['normal'];
-    return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold ${c.bg} ${c.text}">${c.label}</span>`;
-}
-
-function getStatusDot(status) {
-    const colors = {
-        'nueva': 'bg-info',
-        'en_progreso': 'bg-warning',
-        'pendiente_verificacion': 'bg-tertiary',
-        'resuelta': 'bg-success',
-        'cerrada': 'bg-neutral'
-    };
-    return colors[status] || 'bg-neutral';
-}
-
-function formatTimeAgo(dateStr) {
-    const date = new Date(dateStr);
-    const now = new Date();
-    const diff = Math.floor((now - date) / 1000);
-
-    if (diff < 60) return 'hace ' + diff + 's';
-    if (diff < 3600) return 'hace ' + Math.floor(diff / 60) + ' min';
-    if (diff < 86400) return 'hace ' + Math.floor(diff / 3600) + 'h';
-    return 'hace ' + Math.floor(diff / 86400) + ' días';
-}
-
 function renderTickets(tickets) {
-    const tbody = document.getElementById('tickets-table-body');
-    if (!tickets || tickets.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="px-6 py-8 text-center text-on-surface-variant">No se encontraron incidencias</td></tr>';
-        return;
-    }
+  const tbody = document.getElementById('tickets-table-body');
+  if (!tickets || tickets.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" class="px-6 py-8 text-center text-on-surface-variant">No se encontraron incidencias</td></tr>';
+    return;
+  }
 
-    tbody.innerHTML = tickets.map(ticket => `
+  tbody.innerHTML = tickets.map(ticket => `
         <tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="window.location.href='?page=ticket-detail&id=${ticket.id}'">
             <td class="px-6 py-4 whitespace-nowrap font-label-sm text-primary">${ticket.ticket_number}</td>
             <td class="px-6 py-4">
@@ -79,100 +33,100 @@ function renderTickets(tickets) {
 }
 
 function updatePaginationMeta() {
-    const start = totalTickets === 0 ? 0 : (currentPage - 1) * perPage + 1;
-    const end = Math.min(currentPage * perPage, totalTickets);
-    document.getElementById('pagination-info').textContent =
-        `Mostrando ${start} a ${end} de ${totalTickets} incidencias`;
+  const start = totalTickets === 0 ? 0 : (currentPage - 1) * perPage + 1;
+  const end = Math.min(currentPage * perPage, totalTickets);
+  document.getElementById('pagination-info').textContent =
+    `Mostrando ${start} a ${end} de ${totalTickets} incidencias`;
 
-    const btnAnterior = document.getElementById('btn-anterior');
-    const btnSiguiente = document.getElementById('btn-siguiente');
-    btnAnterior.disabled = currentPage <= 1;
-    btnSiguiente.disabled = currentPage * perPage >= totalTickets;
+  const btnAnterior = document.getElementById('btn-anterior');
+  const btnSiguiente = document.getElementById('btn-siguiente');
+  btnAnterior.disabled = currentPage <= 1;
+  btnSiguiente.disabled = currentPage * perPage >= totalTickets;
 }
 
 async function loadDashboard() {
-    try {
-        let url = `${API_BASE}/tickets?page=${currentPage}&per_page=${perPage}`;
-        if (currentStatus) {
-            url += `&status=${currentStatus}`;
-        }
-
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Error al cargar tickets');
-        const data = await response.json();
-
-        totalTickets = data.meta.total;
-        renderTickets(data.data);
-        updatePaginationMeta();
-
-        await loadMetrics();
-    } catch (error) {
-        console.error('Error:', error);
-        document.getElementById('tickets-table-body').innerHTML =
-            '<tr><td colspan="6" class="px-6 py-8 text-center text-error">Error al cargar las incidencias</td></tr>';
+  try {
+    let url = `${API_BASE}/tickets?page=${currentPage}&per_page=${perPage}`;
+    if (currentStatus) {
+      url += `&status=${currentStatus}`;
     }
+
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Error al cargar tickets');
+    const data = await response.json();
+
+    totalTickets = data.meta.total;
+    renderTickets(data.data);
+    updatePaginationMeta();
+
+    await loadMetrics();
+  } catch (error) {
+    console.error('Error:', error);
+    document.getElementById('tickets-table-body').innerHTML =
+      '<tr><td colspan="6" class="px-6 py-8 text-center text-error">Error al cargar las incidencias</td></tr>';
+  }
 }
 
 async function loadMetrics() {
-    try {
-        const response = await fetch(`${API_BASE}/tickets?per_page=1000`);
-        if (!response.ok) throw new Error('Error al cargar métricas');
-        const data = await response.json();
-        const tickets = data.data;
+  try {
+    const response = await fetch(`${API_BASE}/tickets?per_page=1000`);
+    if (!response.ok) throw new Error('Error al cargar métricas');
+    const data = await response.json();
+    const tickets = data.data;
 
-        const abiertas = tickets.filter(t => t.status === 'nueva').length;
-        const pendientes = tickets.filter(t => t.status === 'pendiente_verificacion').length;
-        const urgentes = tickets.filter(t => t.priority === 'urgente').length;
+    const abiertas = tickets.filter(t => t.status === 'nueva').length;
+    const pendientes = tickets.filter(t => t.status === 'pendiente_verificacion').length;
+    const urgentes = tickets.filter(t => t.priority === 'urgente').length;
 
-        const today = new Date().toDateString();
-        const resueltasHoy = tickets.filter(t => {
-            if (t.status !== 'resuelta' && t.status !== 'cerrada') return false;
-            const ticketDate = new Date(t.updated_at).toDateString();
-            return ticketDate === today;
-        }).length;
+    const today = new Date().toDateString();
+    const resueltasHoy = tickets.filter(t => {
+      if (t.status !== 'resuelta' && t.status !== 'cerrada') return false;
+      const ticketDate = new Date(t.updated_at).toDateString();
+      return ticketDate === today;
+    }).length;
 
-        document.getElementById('metric-abiertas').textContent = abiertas;
-        document.getElementById('metric-pendientes').textContent = pendientes;
-        document.getElementById('metric-urgentes').textContent = urgentes;
-        document.getElementById('metric-resueltas').textContent = resueltasHoy;
+    document.getElementById('metric-abiertas').textContent = abiertas;
+    document.getElementById('metric-pendientes').textContent = pendientes;
+    document.getElementById('metric-urgentes').textContent = urgentes;
+    document.getElementById('metric-resueltas').textContent = resueltasHoy;
 
-        const totalCerradas = tickets.filter(t => t.status === 'resuelta' || t.status === 'cerrada').length;
-        const tasa = totalTickets > 0 ? Math.round((totalCerradas / totalTickets) * 100) : 0;
-        document.getElementById('metric-resueltas-sub').textContent = tasa + '% tasa de resolución';
-    } catch (error) {
-        console.error('Error metrics:', error);
-    }
+    const totalCerradas = tickets.filter(t => t.status === 'resuelta' || t.status === 'cerrada').length;
+    const tasa = totalTickets > 0 ? Math.round((totalCerradas / totalTickets) * 100) : 0;
+    document.getElementById('metric-resueltas-sub').textContent = tasa + '% tasa de resolución';
+  } catch (error) {
+    console.error('Error metrics:', error);
+  }
 }
 
 function initDashboard() {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.filter-btn').forEach(b => {
-                b.classList.remove('bg-surface', 'shadow-sm', 'text-primary');
-                b.classList.add('text-on-surface-variant');
-            });
-            this.classList.add('bg-surface', 'shadow-sm', 'text-primary');
-            this.classList.remove('text-on-surface-variant');
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-surface', 'shadow-sm', 'text-primary');
+        b.classList.add('text-on-surface-variant');
+      });
+      this.classList.add('bg-surface', 'shadow-sm', 'text-primary');
+      this.classList.remove('text-on-surface-variant');
 
-            currentStatus = this.dataset.status;
-            currentPage = 1;
-            loadDashboard();
-        });
+      currentStatus = this.dataset.status;
+      currentPage = 1;
+      loadDashboard();
     });
+  });
 
-    document.getElementById('btn-anterior').addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            loadDashboard();
-        }
-    });
+  document.getElementById('btn-anterior').addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      loadDashboard();
+    }
+  });
 
-    document.getElementById('btn-siguiente').addEventListener('click', () => {
-        currentPage++;
-        loadDashboard();
-    });
-
+  document.getElementById('btn-siguiente').addEventListener('click', () => {
+    currentPage++;
     loadDashboard();
+  });
+
+  loadDashboard();
 }
 
 document.addEventListener('DOMContentLoaded', initDashboard);
