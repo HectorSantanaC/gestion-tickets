@@ -23,4 +23,7 @@ $pageTitle = $pageTitle ?? 'Registro de incidencias';
   <!-- Custom CSS -->
   <link href="css/styles.css" rel="stylesheet" />
   <link href="css/components.css" rel="stylesheet" />
+
+  <!-- Shared JavaScript Utilities -->
+  <script src="js/utils.js"></script>
 </head>
