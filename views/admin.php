@@ -2,7 +2,7 @@
 $pageTitle = 'Servicio de Asistencia - Administración y Estadísticas';
 $showTitle = false;
 $searchPlaceholder = 'Buscar recursos...';
-$profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAIAUWnYnK1nq4pZjh8G8Ujy6juO-mpljCFp15GZm7_SU0zjgp_8YlSLV0f_WkvRqv-KjK1ugH76-Oqr0BDX-2ZkxOjRxbif__KOnHxfEQq1ev5YcodMKjJvjNdCDNYtIh7Fk_Yw4FQEzfSTyEs6D-DnkZyiiVlJKdXatxmhHYdOxQ1DXvT6OcRWyO5fxxSf2CGrVOUNG9hk0tNDjqdzvNsPQcN9SI7alIonJ8BfbM80SPF-enO7_G8-tMEMk8I9hvZyIXpN9Y5uzA';
+$extraScripts = '<script src="js/admin.js"></script>';
 ?>
 
 <!-- Main Content Area -->
@@ -33,20 +33,22 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAIAUWnYnK1n
     <!-- Tabbed Interface -->
     <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden mb-margin-xl">
       <div class="flex border-b border-outline-variant bg-surface-container-low px-margin-lg">
-        <button class="px-margin-xl py-4 font-label-sm text-label-sm border-b-2 border-primary text-primary flex items-center gap-2">
-          <span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+        <button class="tab-btn px-margin-xl py-4 font-label-sm text-label-sm flex items-center gap-2 active" data-tab="users">
+          <span class="material-symbols-outlined text-[20px]">groups</span>
           Gestión de Usuarios
         </button>
-        <button class="px-margin-xl py-4 font-label-sm text-label-sm border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-2">
-          <span class="material-symbols-outlined text-[20px]" data-icon="query_stats">query_stats</span>
-          Estadísticas del Sistema
+        <button class="tab-btn px-margin-xl py-4 font-label-sm text-label-sm flex items-center gap-2" data-tab="tags">
+          <span class="material-symbols-outlined text-[20px]">label</span>
+          Configuración de Etiquetas
         </button>
-        <button class="px-margin-xl py-4 font-label-sm text-label-sm border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-2">
-          <span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+        <button class="tab-btn px-margin-xl py-4 font-label-sm text-label-sm flex items-center gap-2" data-tab="categories">
+          <span class="material-symbols-outlined text-[20px]">tune</span>
           Configuración de Categorías
         </button>
       </div>
 
+      <!-- Tab: Gestión de Usuarios -->
+      <div id="tab-users" class="tab-content">
       <!-- Bento Grid Content (Stats Overview) -->
       <div class="p-margin-lg grid grid-cols-1 md:grid-cols-4 gap-gutter">
         <!-- Quick Stats Cards -->
@@ -196,95 +198,96 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAIAUWnYnK1n
           </table>
         </div>
       </div>
-    </div>
+      </div><!-- End tab-users -->
 
-    <!-- Bottom Asymmetric Section -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-margin-xl">
-      <!-- System Stats Visualizations -->
-      <div class="lg:col-span-2 space-y-margin-xl">
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-margin-xl">
-          <div class="flex justify-between items-center mb-margin-lg">
-            <div>
-              <h3 class="font-h3 text-h3 text-on-surface">Volumen de Incidencias por Categoría</h3>
-              <p class="text-meta-xs text-on-surface-variant">Distribución según los tipos principales de incidentes</p>
+      <!-- Tab: Configuración de Etiquetas -->
+      <div id="tab-tags" class="tab-content hidden">
+        <div class="p-margin-xl">
+          <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-margin-xl">
+            <div class="flex justify-between items-center mb-margin-lg">
+              <div>
+                <h3 class="font-h3 text-h3 text-on-surface">Etiquetas</h3>
+                <p class="text-meta-xs text-on-surface-variant">Gestiona las etiquetas disponibles para clasificar incidencias</p>
+              </div>
+              <button id="add-tag-btn" class="w-8 h-8 bg-primary text-on-primary rounded-full hover:bg-primary-container transition-all flex items-center justify-center">
+                <span class="material-symbols-outlined text-[18px]">add</span>
+              </button>
             </div>
-            <button class="material-symbols-outlined text-on-surface-variant">fullscreen</button>
-          </div>
-
-          <!-- Simulated Bar Chart -->
-          <div class="flex items-end gap-gutter h-64 pt-margin-xl">
-            <div class="flex-1 flex flex-col items-center gap-2 group">
-              <div class="w-full bg-primary-fixed-dim rounded-t-lg transition-all group-hover:bg-primary" style="height: 85%;"></div>
-              <span class="font-meta-xs text-meta-xs text-on-surface-variant">Red</span>
-            </div>
-            <div class="flex-1 flex flex-col items-center gap-2 group">
-              <div class="w-full bg-primary-fixed-dim rounded-t-lg transition-all group-hover:bg-primary" style="height: 60%;"></div>
-              <span class="font-meta-xs text-meta-xs text-on-surface-variant">Hardware</span>
-            </div>
-            <div class="flex-1 flex flex-col items-center gap-2 group">
-              <div class="w-full bg-primary-fixed-dim rounded-t-lg transition-all group-hover:bg-primary" style="height: 40%;"></div>
-              <span class="font-meta-xs text-meta-xs text-on-surface-variant">Cuentas</span>
-            </div>
-            <div class="flex-1 flex flex-col items-center gap-2 group">
-              <div class="w-full bg-primary-fixed-dim rounded-t-lg transition-all group-hover:bg-primary" style="height: 95%;"></div>
-              <span class="font-meta-xs text-meta-xs text-on-surface-variant">Seguridad</span>
-            </div>
-            <div class="flex-1 flex flex-col items-center gap-2 group">
-              <div class="w-full bg-primary-fixed-dim rounded-t-lg transition-all group-hover:bg-primary" style="height: 25%;"></div>
-              <span class="font-meta-xs text-meta-xs text-on-surface-variant">Facturación</span>
-            </div>
+            <ul id="tags-list" class="space-y-3">
+            </ul>
           </div>
         </div>
-      </div>
+      </div><!-- End tab-tags -->
 
-      <!-- Category Settings Sidebar-style List -->
-      <div class="space-y-margin-xl">
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-margin-xl h-full">
-          <div class="flex justify-between items-center mb-margin-lg">
-            <h3 class="font-h3 text-h3 text-on-surface">Categorías</h3>
-            <button class="p-1.5 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-all">
-              <span class="material-symbols-outlined text-[18px]">add</span>
-            </button>
+      <!-- Tab: Configuración de Categorías -->
+      <div id="tab-categories" class="tab-content hidden">
+        <div class="p-margin-xl">
+          <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-margin-xl">
+            <div class="flex justify-between items-center mb-margin-lg">
+              <div>
+                <h3 class="font-h3 text-h3 text-on-surface">Categorías</h3>
+                <p class="text-meta-xs text-on-surface-variant">Gestiona las categorías disponibles para organizar incidencias</p>
+              </div>
+              <button id="add-category-btn" class="w-8 h-8 bg-primary text-on-primary rounded-full hover:bg-primary-container transition-all flex items-center justify-center">
+                <span class="material-symbols-outlined text-[18px]">add</span>
+              </button>
+            </div>
+            <ul id="categories-list" class="space-y-3">
+            </ul>
           </div>
-          <ul class="space-y-3">
-            <li class="p-3 bg-surface border border-outline-variant rounded-lg flex items-center justify-between group hover:border-primary transition-all cursor-pointer">
-              <div class="flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-error"></div>
-                <span class="font-body-md text-body-md text-on-surface">Infraestructura Crítica</span>
-              </div>
-              <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
-            </li>
-            <li class="p-3 bg-surface border border-outline-variant rounded-lg flex items-center justify-between group hover:border-primary transition-all cursor-pointer">
-              <div class="flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-tertiary"></div>
-                <span class="font-body-md text-body-md text-on-surface">Errores de Software</span>
-              </div>
-              <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
-            </li>
-            <li class="p-3 bg-surface border border-outline-variant rounded-lg flex items-center justify-between group hover:border-primary transition-all cursor-pointer">
-              <div class="flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-secondary"></div>
-                <span class="font-body-md text-body-md text-on-surface">Solicitudes de Acceso</span>
-              </div>
-              <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
-            </li>
-            <li class="p-3 bg-surface border border-outline-variant rounded-lg flex items-center justify-between group hover:border-primary transition-all cursor-pointer">
-              <div class="flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-primary"></div>
-                <span class="font-body-md text-body-md text-on-surface">Problemas de Red</span>
-              </div>
-              <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
-            </li>
-            <li class="p-3 bg-surface border border-outline-variant rounded-lg flex items-center justify-between group hover:border-primary transition-all cursor-pointer">
-              <div class="flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-success"></div>
-                <span class="font-body-md text-body-md text-on-surface">Consulta General</span>
-              </div>
-              <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
-            </li>
-          </ul>
         </div>
-      </div>
+      </div><!-- End tab-categories -->
+
     </div>
   </div>
 </main>
+
+<!-- Category Modal -->
+<div id="category-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-lg w-full max-w-md p-margin-xl">
+    <div class="flex justify-between items-center mb-margin-lg">
+      <h3 id="category-modal-title" class="font-h3 text-h3 text-on-surface">Nueva Categoría</h3>
+      <button id="close-category-modal" class="p-1 hover:bg-surface-container rounded transition-colors">
+        <span class="material-symbols-outlined text-on-surface-variant">close</span>
+      </button>
+    </div>
+    <form id="category-form" class="space-y-margin-lg">
+      <input type="hidden" id="category-id" value="">
+      <div>
+        <label class="font-label-sm text-label-sm text-on-surface-variant block mb-margin-sm">Nombre</label>
+        <input id="category-name" class="w-full bg-white border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" type="text" required maxlength="100" />
+      </div>
+      <div>
+        <label class="font-label-sm text-label-sm text-on-surface-variant block mb-margin-sm">Descripción</label>
+        <textarea id="category-description" class="w-full bg-white border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none resize-none" rows="3"></textarea>
+      </div>
+      <div class="flex justify-end gap-margin-md pt-margin-md border-t border-outline-variant">
+        <button type="button" id="close-category-modal-btn" class="px-margin-xl py-3 rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors">Cancelar</button>
+        <button type="submit" class="px-margin-xl py-3 rounded-lg font-label-sm text-label-sm bg-primary text-on-primary hover:bg-primary-container shadow-md transition-all">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Tag Modal -->
+<div id="tag-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-lg w-full max-w-md p-margin-xl">
+    <div class="flex justify-between items-center mb-margin-lg">
+      <h3 id="tag-modal-title" class="font-h3 text-h3 text-on-surface">Nueva Etiqueta</h3>
+      <button id="close-tag-modal" class="p-1 hover:bg-surface-container rounded transition-colors">
+        <span class="material-symbols-outlined text-on-surface-variant">close</span>
+      </button>
+    </div>
+    <form id="tag-form" class="space-y-margin-lg">
+      <input type="hidden" id="tag-id" value="">
+      <div>
+        <label class="font-label-sm text-label-sm text-on-surface-variant block mb-margin-sm">Nombre</label>
+        <input id="tag-name" class="w-full bg-white border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" type="text" required maxlength="50" />
+      </div>
+      <div class="flex justify-end gap-margin-md pt-margin-md border-t border-outline-variant">
+        <button type="button" id="close-tag-modal-btn" class="px-margin-xl py-3 rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors">Cancelar</button>
+        <button type="submit" class="px-margin-xl py-3 rounded-lg font-label-sm text-label-sm bg-primary text-on-primary hover:bg-primary-container shadow-md transition-all">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
