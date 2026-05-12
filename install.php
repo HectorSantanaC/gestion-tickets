@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/includes/config/db.php';
+require_once __DIR__ . '/config/db.php';
 
 $db = getDbConnection();
 

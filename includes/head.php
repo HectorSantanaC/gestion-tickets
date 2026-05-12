@@ -18,7 +18,7 @@ $pageTitle = $pageTitle ?? 'Registro de incidencias';
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
 
   <!-- Tailwind Config -->
-  <?php include_once 'config/config.php'; ?>
+  <?php include_once 'config/tailwind.php'; ?>
 
   <!-- Custom CSS -->
   <link href="css/styles.css" rel="stylesheet" />

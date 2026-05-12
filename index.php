@@ -8,7 +8,7 @@ if (strpos($apiPath, '/api/') === 0) {
 }
 
 // Load configuration
-$config = require __DIR__ . '/includes/config/constants.php';
+$config = require __DIR__ . '/config/app.php';
 
 // Router - Entry point
 $page = isset($_GET['page']) && is_string($_GET['page']) 
