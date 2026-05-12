@@ -5,14 +5,14 @@ let totalTickets = 0;
 
 function getStatusBadge(status) {
   const configs = {
-    'nueva': { bg: 'bg-primary-fixed', text: 'text-primary', label: 'Nuevo' },
+    'abierta': { bg: 'bg-primary-fixed', text: 'text-primary', label: 'Abierta' },
     'en_proceso': { bg: 'bg-tertiary-fixed', text: 'text-tertiary', label: 'En Proceso' },
     'en_progreso': { bg: 'bg-tertiary-fixed', text: 'text-tertiary', label: 'En Proceso' },
     'pendiente_verificacion': { bg: 'bg-secondary-fixed', text: 'text-on-secondary-fixed', label: 'Pendiente' },
     'resuelta': { bg: 'bg-success-container', text: 'text-success', label: 'Resuelta' },
     'cerrada': { bg: 'bg-success-container', text: 'text-success', label: 'Cerrado' }
   };
-  const c = configs[status] || configs['nueva'];
+  const c = configs[status] || configs['abierta'];
   return `<span class="px-margin-md py-1 rounded-full ${c.bg} ${c.text} font-label-sm text-label-sm">${c.label}</span>`;
 }
 

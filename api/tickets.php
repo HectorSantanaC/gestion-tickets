@@ -8,7 +8,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 $input = json_decode(file_get_contents('php://input'), true) ?? [];
 $db = getDbConnection();
 
-$validStatuses = ['nueva', 'en_progreso', 'pendiente_verificacion', 'resuelta', 'cerrada'];
+$validStatuses = ['abierta', 'en_progreso', 'pendiente_verificacion', 'resuelta', 'cerrada'];
 $validPriorities = ['baja', 'normal', 'alta', 'urgente'];
 $validPrefixes = ['TIC', 'INC', 'REQ', 'BUG'];
 
@@ -159,7 +159,7 @@ if ($method === 'POST') {
     }
 
     $description = trim($input['description'] ?? '');
-    $status = $input['status'] ?? 'nueva';
+    $status = $input['status'] ?? 'abierta';
     $priority = $input['priority'] ?? 'normal';
     $assigneeExternalId = isset($input['assignee_external_id']) ? (int) $input['assignee_external_id'] : null;
     $impactLevel = trim($input['impact_level'] ?? '');

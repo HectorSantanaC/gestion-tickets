@@ -2,7 +2,7 @@ const API_BASE = '/gestion-tickets/api';
 
 function getStatusLabel(status) {
   const labels = {
-    'nueva': 'Abierta',
+    'abierta': 'Abierta',
     'en_proceso': 'En Proceso',
     'en_progreso': 'En Progreso',
     'pendiente_verificacion': 'Pendiente de Verificación',
@@ -14,7 +14,7 @@ function getStatusLabel(status) {
 
 function getStatusDot(status) {
   const colors = {
-    'nueva': 'bg-info',
+    'abierta': 'bg-info',
     'en_proceso': 'bg-warning',
     'en_progreso': 'bg-warning',
     'pendiente_verificacion': 'bg-tertiary',

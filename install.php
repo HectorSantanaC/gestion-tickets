@@ -31,7 +31,7 @@ echo "[2/5] Creating ENUM types...\n";
 
 $db->exec("
     CREATE TYPE ticket_status AS ENUM (
-        'nueva',
+        'abierta',
         'en_progreso',
         'pendiente_verificacion',
         'resuelta',
@@ -87,7 +87,7 @@ $db->exec("
         ticket_number VARCHAR(20) NOT NULL UNIQUE,
         subject VARCHAR(500) NOT NULL,
         description TEXT NOT NULL DEFAULT '',
-        status ticket_status NOT NULL DEFAULT 'nueva',
+        status ticket_status NOT NULL DEFAULT 'abierta',
         priority ticket_priority NOT NULL DEFAULT 'normal',
         category_id UUID REFERENCES categories(id),
         reporter_external_id INTEGER NOT NULL,
