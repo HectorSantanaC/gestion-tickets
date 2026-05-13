@@ -1,5 +1,3 @@
-const API_BASE = '/gestion-tickets/api';
-
 function getStatusLabel(status) {
   const labels = {
     'abierta': 'Abierta',

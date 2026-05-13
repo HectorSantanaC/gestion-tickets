@@ -9,14 +9,12 @@ require_once __DIR__ . '/helpers/validator.php';
 require_once __DIR__ . '/../config/db.php';
 
 $uri = $_SERVER['REQUEST_URI'] ?? '/';
-$basePath = str_replace('/gestion-tickets', '', $uri);
+
+// Detect base path (works in subdirectory or root)
+$basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
 $apiPath = '/api/';
 
-if (strpos($basePath, $apiPath) !== 0) {
-    sendResponse(jsonError('Recurso no encontrado'), 404);
-}
-
-$path = substr($basePath, strlen($apiPath));
+$path = substr($uri, strlen($basePath) + strlen($apiPath));
 $segments = explode('?', $path);
 $resource = $segments[0];
 $resource = trim($resource, '/');

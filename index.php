@@ -1,7 +1,10 @@
 <?php
 
 $uri = $_SERVER['REQUEST_URI'] ?? '/';
-$apiPath = str_replace('/gestion-tickets', '', $uri);
+
+// Detect base path (works in subdirectory or root)
+$basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$apiPath = str_replace($basePath, '', $uri);
 if (strpos($apiPath, '/api/') === 0) {
     require __DIR__ . '/api/index.php';
     exit;
@@ -31,6 +34,9 @@ $pageTitle = $config['page_titles'][$page] ?? $config['default_title'];
 
 // Sidebar width for layout
 $sidebarWidth = $config['sidebar_width'];
+
+// API base URL for JavaScript
+$apiBase = $basePath . '/api';
 ?>
 <!DOCTYPE html>
 <html class="light" lang="es">

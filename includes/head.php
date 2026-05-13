@@ -24,6 +24,9 @@ $pageTitle = $pageTitle ?? 'Registro de incidencias';
   <link href="css/styles.css" rel="stylesheet" />
   <link href="css/components.css" rel="stylesheet" />
 
+  <!-- API Base URL (dynamic for subdirectory or root) -->
+  <script>const API_BASE = '<?php echo $apiBase; ?>';</script>
+
   <!-- Shared JavaScript Utilities -->
   <script src="js/utils.js"></script>
 </head>
