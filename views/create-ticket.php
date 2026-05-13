@@ -122,10 +122,6 @@ $searchPlaceholder = 'Buscar incidencias, etiquetas o usuarios...';
       </div>
     </div>
   </div>
-
-  <footer class="mt-auto p-margin-xl text-center">
-    <p class="font-meta-xs text-meta-xs text-on-surface-variant opacity-50">© 2024 Mesa de Ayuda Empresarial. Todos los derechos reservados.</p>
-  </footer>
 </main>
 
 <script src="js/create-ticket.js"></script>

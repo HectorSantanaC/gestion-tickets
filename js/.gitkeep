@@ -1,0 +1,7 @@
+# JavaScript files for the Gestion Tickets application
+# - utils.js: Shared utility functions (loaded in all pages)
+# - dashboard.js: Dashboard page logic
+# - tickets.js: Tickets list page logic
+# - admin.js: Admin page logic (future)
+# - create-ticket.js: Create ticket page logic (future)
+# - ticket-detail.js: Ticket detail page logic (future)
