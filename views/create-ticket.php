@@ -2,7 +2,6 @@
 $pageTitle = 'Nueva Incidencia - Servicio de Asistencia';
 $showTitle = false;
 $searchPlaceholder = 'Buscar incidencias, etiquetas o usuarios...';
-$profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvmIwUBTmDyFzDPY5TJQHdIROEKVkPpphN_YGzFElSQluoc3mGGV2mHoHVbcc-bevtLixCLZVHJaInPmQtAvNnsk7YSQYdbS6BfkcYkhUnwk0SYGL0GSqWwnVzNI7297E3XJERr-I2BFicakLS0efDvoLS2ONcEcQ4-SSZO1JxnKVJtc-4M1rWpcFL1OijrxDtz6GmFIMctFjUq7odPGnAqaMkR89R5leL0CMfkq6Meg8Ft-bZcc-cHdpg_QAs8rf3Ud2K8gHLmO0';
 ?>
 
 <!-- Main Content Area -->
@@ -18,12 +17,12 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvmIwUBTmDy
     </div>
 
     <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-margin-xl">
-      <form class="space-y-margin-xl">
+      <form id="create-ticket-form" class="space-y-margin-xl">
         <!-- Subject Row -->
         <div class="grid grid-cols-1 gap-margin-md">
           <label class="font-label-sm text-label-sm text-on-surface-variant">Asunto</label>
           <div class="relative">
-            <input class="w-full bg-white border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" placeholder="Describe brevemente la incidencia" type="text" />
+            <input id="ticket-subject" class="w-full bg-white border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" placeholder="Describe brevemente la incidencia" type="text" />
             <div class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-50 cursor-help" title="Enter a concise title for your request">
               <span class="material-symbols-outlined text-[18px]">info</span>
             </div>
@@ -34,33 +33,27 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvmIwUBTmDy
         <div class="grid grid-cols-1 md:grid-cols-2 gap-margin-xl">
           <div class="space-y-margin-md">
             <label class="font-label-sm text-label-sm text-on-surface-variant">Categoría</label>
-            <select class="w-full bg-white border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none appearance-none">
-              <option disabled="" selected="" value="">Seleccionar categoría</option>
-              <option>Hardware</option>
-              <option>Software</option>
-              <option>Red</option>
-              <option>Acceso a Cuentas</option>
-              <option>Facturación</option>
-              <option>Otro</option>
+            <select id="ticket-category" class="w-full bg-white border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none appearance-none">
+              <option value="">Seleccionar categoría</option>
             </select>
           </div>
           <div class="space-y-margin-md">
             <label class="font-label-sm text-label-sm text-on-surface-variant">Prioridad</label>
             <div class="flex gap-margin-md">
               <label class="flex-1 cursor-pointer group">
-                <input class="sr-only peer" name="priority" type="radio" />
+                <input class="sr-only peer" name="priority" type="radio" value="baja" />
                 <div class="text-center py-2 px-3 border border-outline-variant rounded-lg font-label-sm text-label-sm text-on-surface-variant peer-checked:bg-secondary-container peer-checked:border-secondary peer-checked:text-on-secondary-container transition-all group-hover:bg-surface-container-low">Baja</div>
               </label>
               <label class="flex-1 cursor-pointer group">
-                <input checked="" class="sr-only peer" name="priority" type="radio" />
+                <input checked="" class="sr-only peer" name="priority" type="radio" value="normal" />
                 <div class="text-center py-2 px-3 border border-outline-variant rounded-lg font-label-sm text-label-sm text-on-surface-variant peer-checked:bg-primary-fixed peer-checked:border-primary-fixed-dim peer-checked:text-on-primary-fixed transition-all group-hover:bg-surface-container-low">Normal</div>
               </label>
               <label class="flex-1 cursor-pointer group">
-                <input class="sr-only peer" name="priority" type="radio" />
+                <input class="sr-only peer" name="priority" type="radio" value="alta" />
                 <div class="text-center py-2 px-3 border border-outline-variant rounded-lg font-label-sm text-label-sm text-on-surface-variant peer-checked:bg-tertiary-fixed peer-checked:border-tertiary-fixed-dim peer-checked:text-on-tertiary-fixed transition-all group-hover:bg-surface-container-low">Alta</div>
               </label>
               <label class="flex-1 cursor-pointer group">
-                <input class="sr-only peer" name="priority" type="radio" />
+                <input class="sr-only peer" name="priority" type="radio" value="urgente" />
                 <div class="text-center py-2 px-3 border border-outline-variant rounded-lg font-label-sm text-label-sm text-on-surface-variant peer-checked:bg-error-container peer-checked:border-error peer-checked:text-on-error-container transition-all group-hover:bg-surface-container-low">Urgente</div>
               </label>
             </div>
@@ -79,7 +72,7 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvmIwUBTmDy
               <div class="w-[1px] bg-outline-variant mx-2 my-1"></div>
               <button class="p-1.5 rounded hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">code</span></button>
             </div>
-            <textarea class="w-full p-4 text-body-md border-none focus:ring-0 resize-none" placeholder="Describe los pasos para reproducir la incidencia..." rows="6"></textarea>
+            <textarea id="ticket-description" class="w-full p-4 text-body-md border-none focus:ring-0 resize-none" placeholder="Describe los pasos para reproducir la incidencia..." rows="6"></textarea>
           </div>
         </div>
 
@@ -98,7 +91,7 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvmIwUBTmDy
 
         <!-- Actions -->
         <div class="flex items-center justify-end gap-margin-lg pt-margin-xl border-t border-outline-variant">
-          <button class="px-margin-xl py-3 rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" type="button">Cancelar</button>
+          <button id="cancel-btn" class="px-margin-xl py-3 rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" type="button">Cancelar</button>
           <button class="px-margin-xl py-3 rounded-lg font-label-sm text-label-sm bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container shadow-md hover:shadow-lg transition-all active:scale-95" type="submit">Enviar Incidencia</button>
         </div>
       </form>
@@ -134,6 +127,8 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvmIwUBTmDy
     <p class="font-meta-xs text-meta-xs text-on-surface-variant opacity-50">© 2024 Mesa de Ayuda Empresarial. Todos los derechos reservados.</p>
   </footer>
 </main>
+
+<script src="js/create-ticket.js"></script>
 
 <!-- Mobile Navigation (BottomNavBar) -->
 <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around items-center h-16 px-4 z-50">
