@@ -41,7 +41,7 @@ $bodyClass = 'bg-background text-on-background min-h-screen flex flex-col items-
       </div>
 
       <!-- Login Form -->
-      <form action="#" class="space-y-6" onsubmit="return false;">
+      <form action="#" id="login-form" class="space-y-6">
         <div class="space-y-2">
           <label class="font-label-sm text-label-sm text-on-surface ml-1" for="email">Correo Corporativo</label>
           <div class="relative group">
@@ -69,6 +69,8 @@ $bodyClass = 'bg-background text-on-background min-h-screen flex flex-col items-
           <label class="font-body-md text-body-md text-on-surface-variant" for="remember">Mantener sesión iniciada</label>
         </div>
 
+        <div id="login-error" class="hidden bg-error-container text-error font-body-md text-body-md rounded-lg px-4 py-3" role="alert"></div>
+
         <button class="w-full py-3 bg-primary text-on-primary font-label-sm text-label-sm rounded-lg shadow-md hover:bg-on-primary-fixed-variant active:scale-[0.98] transition-all" type="submit">
           Iniciar Sesión
         </button>
@@ -90,4 +92,5 @@ $bodyClass = 'bg-background text-on-background min-h-screen flex flex-col items-
       </div>
     </div>
   </main>
+  <script src="js/login.js"></script>
 </body>

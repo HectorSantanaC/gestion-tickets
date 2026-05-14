@@ -3,21 +3,26 @@
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method !== 'POST') {
-    sendResponse(jsonError('Método no permitido'), 405);
+  sendResponse(jsonError('Método no permitido'), 405);
 }
 
 $_SESSION = [];
 
 if (ini_get('session.use_cookies')) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params['path'], $params['domain'],
-        $params['secure'], $params['httponly']
-    );
+  $params = session_get_cookie_params();
+  setcookie(
+    session_name(),
+    '',
+    time() - 42000,
+    $params['path'],
+    $params['domain'],
+    $params['secure'],
+    $params['httponly']
+  );
 }
 
 session_destroy();
 
 sendResponse(jsonSuccess([
-    'message' => 'Sesión cerrada exitosamente',
+  'message' => 'Sesión cerrada exitosamente',
 ]));
