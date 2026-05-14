@@ -22,7 +22,6 @@ $pageTitle = $pageTitle ?? 'Registro de incidencias';
 
   <!-- Custom CSS -->
   <link href="css/styles.css" rel="stylesheet" />
-  <link href="css/components.css" rel="stylesheet" />
 
   <!-- API Base URL (dynamic for subdirectory or root) -->
   <script>const API_BASE = '<?php echo $apiBase; ?>';</script>
