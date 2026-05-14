@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $uri = $_SERVER['REQUEST_URI'] ?? '/';
 
 // Detect base path (works in subdirectory or root)
@@ -21,6 +23,12 @@ $page = isset($_GET['page']) && is_string($_GET['page'])
 // Normalize page name (whitelist)
 if (!in_array($page, $config['allowed_pages'], true)) {
   $page = $config['default_page'];
+}
+
+// Auth guard — redirect to login if not authenticated
+if ($page !== 'login' && empty($_SESSION['user_id'])) {
+    header('Location: ' . $basePath . '/?page=login');
+    exit;
 }
 
 // Set currentPage for navbar highlighting
