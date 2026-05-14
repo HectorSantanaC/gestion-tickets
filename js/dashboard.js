@@ -69,29 +69,18 @@ async function loadDashboard() {
 
 async function loadMetrics() {
   try {
-    const response = await fetch(`${API_BASE}/tickets?per_page=1000`);
+    const response = await fetch(`${API_BASE}/statistics`);
     if (!response.ok) throw new Error('Error al cargar métricas');
     const data = await response.json();
-    const tickets = data.data;
 
-    const abiertas = tickets.filter(t => t.status === 'abierta').length;
-    const pendientes = tickets.filter(t => t.status === 'pendiente_verificacion').length;
-    const urgentes = tickets.filter(t => t.priority === 'urgente').length;
+    document.getElementById('metric-abiertas').textContent = data.data.abiertas;
+    document.getElementById('metric-pendientes').textContent = data.data.pendientes;
+    document.getElementById('metric-urgentes').textContent = data.data.urgentes;
+    document.getElementById('metric-resueltas').textContent = data.data.resueltas_hoy;
 
-    const today = new Date().toDateString();
-    const resueltasHoy = tickets.filter(t => {
-      if (t.status !== 'resuelta' && t.status !== 'cerrada') return false;
-      const ticketDate = new Date(t.updated_at).toDateString();
-      return ticketDate === today;
-    }).length;
-
-    document.getElementById('metric-abiertas').textContent = abiertas;
-    document.getElementById('metric-pendientes').textContent = pendientes;
-    document.getElementById('metric-urgentes').textContent = urgentes;
-    document.getElementById('metric-resueltas').textContent = resueltasHoy;
-
-    const totalCerradas = tickets.filter(t => t.status === 'resuelta' || t.status === 'cerrada').length;
-    const tasa = totalTickets > 0 ? Math.round((totalCerradas / totalTickets) * 100) : 0;
+    const tasa = data.data.total > 0
+      ? Math.round((data.data.cerradas / data.data.total) * 100)
+      : 0;
     document.getElementById('metric-resueltas-sub').textContent = tasa + '% tasa de resolución';
   } catch (error) {
     console.error('Error metrics:', error);
