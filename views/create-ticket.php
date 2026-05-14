@@ -79,14 +79,14 @@ $searchPlaceholder = 'Buscar incidencias, etiquetas o usuarios...';
         <!-- File Attachment -->
         <div class="space-y-margin-md">
           <label class="font-label-sm text-label-sm text-on-surface-variant">Adjuntos</label>
-          <div class="border-2 border-dashed border-outline-variant rounded-xl p-margin-xl flex flex-col items-center justify-center bg-surface hover:bg-surface-container transition-colors cursor-pointer group">
+          <label for="ticket-files" class="file-upload-zone border-2 border-dashed border-outline-variant rounded-xl p-margin-xl flex flex-col items-center justify-center bg-surface hover:bg-surface-container transition-colors cursor-pointer group">
             <div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center mb-margin-md group-hover:scale-110 transition-transform">
               <span class="material-symbols-outlined text-primary">cloud_upload</span>
             </div>
             <p class="font-label-sm text-label-sm text-on-surface">Haz clic para subir o arrastra y suelta</p>
-            <p class="font-meta-xs text-meta-xs text-on-surface-variant opacity-60 mt-1">PNG, JPG o PDF (máx. 10MB)</p>
-            <input class="hidden" type="file" />
-          </div>
+            <p id="file-count" class="font-meta-xs text-meta-xs text-on-surface-variant opacity-60 mt-1">PNG, JPG o PDF (máx. 10MB)</p>
+          </label>
+          <input id="ticket-files" class="hidden" type="file" multiple accept=".png,.jpg,.jpeg,.pdf" />
         </div>
 
         <!-- Actions -->

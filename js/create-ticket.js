@@ -1,4 +1,5 @@
 let categories = [];
+let selectedFiles = [];
 
 async function loadCategories() {
   try {
@@ -61,7 +62,25 @@ async function submitTicket(e) {
     }
     
     const data = await response.json();
-    window.location.href = `?page=ticket-detail&id=${data.data.id}`;
+    const ticketId = data.data.id;
+
+    for (const file of selectedFiles) {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('uploader_external_id', '1');
+
+      const uploadResponse = await fetch(`${API_BASE}/tickets/${ticketId}/attachments`, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!uploadResponse.ok) {
+        const errData = await uploadResponse.json();
+        console.error('Error subiendo archivo:', errData.error || uploadResponse.statusText);
+      }
+    }
+
+    window.location.href = `?page=ticket-detail&id=${ticketId}`;
   } catch (error) {
     console.error('Error:', error);
     alert('Error al crear ticket');
@@ -77,7 +96,18 @@ function initCreateTicket() {
   document.getElementById('cancel-btn')?.addEventListener('click', () => {
     window.location.href = '?page=dashboard';
   });
-  
+
+  const fileInput = document.getElementById('ticket-files');
+  fileInput?.addEventListener('change', function () {
+    selectedFiles = Array.from(this.files);
+    const fileLabel = document.getElementById('file-count');
+    if (fileLabel) {
+      fileLabel.textContent = selectedFiles.length > 0
+        ? selectedFiles.length + ' archivo(s) seleccionado(s)'
+        : 'PNG, JPG o PDF (máx. 10MB)';
+    }
+  });
+
   loadCategories();
 }
 
