@@ -17,18 +17,16 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
       <div class="flex items-start justify-between">
         <div>
           <div class="flex items-center gap-margin-md mb-margin-sm">
-            <span class="font-meta-xs text-meta-xs text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded">TIC-2849</span>
-            <div class="flex items-center gap-1 text-tertiary">
-              <span class="material-symbols-outlined text-[14px]">priority_high</span>
-              <span class="font-label-sm text-label-sm">URGENTE</span>
+            <span id="detail-ticket-number" class="font-meta-xs text-meta-xs text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded">-</span>
+            <div id="detail-priority" class="flex items-center gap-1 text-tertiary">
             </div>
           </div>
-          <h2 class="font-h1 text-h1 text-on-surface">Picos de latencia en base de datos durante horas pico de APAC</h2>
+          <h2 id="detail-title" class="font-h1 text-h1 text-on-surface">-</h2>
         </div>
         <div class="flex items-center gap-margin-md">
-          <span class="px-margin-lg py-1 rounded-full bg-tertiary-fixed text-tertiary font-label-sm text-label-sm flex items-center gap-2">
+          <span id="detail-status-badge" class="px-margin-lg py-1 rounded-full bg-tertiary-fixed text-tertiary font-label-sm text-label-sm flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-tertiary"></span>
-            En Progreso
+            -
           </span>
         </div>
       </div>
@@ -40,30 +38,27 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
       <div class="lg:col-span-2 space-y-margin-xl">
         <div class="bg-surface-container-lowest p-margin-xl rounded-xl shadow-soft border border-outline-variant">
           <h3 class="font-h3 text-h3 text-on-surface mb-margin-lg">Descripción Detallada</h3>
-          <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-            Estamos observando picos significativos de latencia en la base de datos de producción (Postgres-Cluster-01) coincidiendo con el inicio del día laboral de APAC. Las métricas muestran que la latencia de lectura salta de 10ms a más de 450ms entre las 01:00 y 03:00 UTC.
-          </p>
-          <p class="font-body-lg text-body-lg text-on-surface-variant mt-margin-lg leading-relaxed">
-            La investigación preliminar sugiere que un trabajo pesado de generación de informes podría estar provocando un escaneo secuencial en la tabla 'transaction_logs', que ha crecido significativamente durante el último sprint.
-          </p>
+          <div id="detail-description" class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            -
+          </div>
           <div class="mt-margin-xl pt-margin-xl border-t border-outline-variant grid grid-cols-2 md:grid-cols-3 gap-margin-xl">
-            <div>
+            <div id="detail-reporter">
               <p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Creado por</p>
               <div class="flex items-center gap-2">
-                <div class="w-6 h-6 rounded-full bg-primary-fixed-dim flex items-center justify-center text-[10px] font-bold text-primary">JD</div>
-                <span class="font-body-md text-body-md">Jane Doe</span>
+                <div class="w-6 h-6 rounded-full bg-primary-fixed-dim flex items-center justify-center text-[10px] font-bold text-primary">?</div>
+                <span class="font-body-md text-body-md">-</span>
               </div>
             </div>
-            <div>
+            <div id="detail-assignee">
               <p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Asignado a</p>
               <div class="flex items-center gap-2">
-                <div class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center text-[10px] font-bold text-secondary">AM</div>
-                <span class="font-body-md text-body-md">Alex Miller</span>
+                <div class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center text-[10px] font-bold text-secondary">?</div>
+                <span class="font-body-md text-body-md">Sin asignar</span>
               </div>
             </div>
             <div>
               <p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Fecha de Creación</p>
-              <span class="font-body-md text-body-md">24 oct 2023 • 09:12</span>
+              <span id="detail-created-at" class="font-body-md text-body-md">-</span>
             </div>
           </div>
         </div>
@@ -71,30 +66,14 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
         <!-- Activity Feed & Comments -->
         <div class="bg-surface-container-lowest p-margin-xl rounded-xl shadow-soft border border-outline-variant">
           <h3 class="font-h3 text-h3 text-on-surface mb-margin-xl">Actividad y Discusión</h3>
-          <div class="space-y-margin-xl">
-            <!-- Change Log Entry -->
+          <div id="detail-comments" class="space-y-margin-xl">
             <div class="flex gap-margin-lg">
               <div class="mt-1">
-                <span class="material-symbols-outlined text-outline text-[20px]">history</span>
+                <span class="material-symbols-outlined text-outline text-[20px]">info</span>
               </div>
               <div>
                 <p class="font-body-md text-body-md text-on-surface-variant">
-                  <span class="font-bold text-on-surface">Sistema</span> cambió el estado de <span class="bg-surface-container-high px-2 py-0.5 rounded">Nueva</span> a <span class="bg-tertiary-fixed text-tertiary px-2 py-0.5 rounded">En Progreso</span>
-                </p>
-                <p class="font-meta-xs text-meta-xs text-outline mt-1">hace 2 horas</p>
-              </div>
-            </div>
-
-            <!-- Comment Entry -->
-            <div class="flex gap-margin-lg">
-              <img alt="Avatar" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOk-a6a1q4bLh6gRiwcxXV7oqSXLL2pBIyoc5kbQMp67NJyP7MZM1RNZ7ezGVM7-60ZJi7fwJlb3yWyZNgkagtkDPTuxlmNZbm6gVezoxkBggu3o-rDyl72elheAkcomn2IKKa8yR-3MF1maEw4LU0ULQBfyC7bxezqdY3VZq7pnLPsUZJhHLSDOtZvzjQj5j7tYPI6qdPZ878EqYsShqVzEZ25-ff321FbYqwwDDguVfUj7EyffyLqPp6GP95TmTTxvOT2JPvhIs" />
-              <div class="flex-1 bg-surface-container-low p-margin-lg rounded-xl">
-                <div class="flex justify-between items-center mb-2">
-                  <span class="font-label-sm text-label-sm text-primary">Alex Miller</span>
-                  <span class="font-meta-xs text-meta-xs text-outline">hace 1 hora</span>
-                </div>
-                <p class="font-body-md text-body-md text-on-surface-variant">
-                  Estoy revisando el plan de ejecución de los scripts de informes nocturnos. Parece que el índice en 'created_at' está siendo ignorado debido a una incompatibilidad de tipo en la consulta.
+                  Sin actividad aún
                 </p>
               </div>
             </div>
@@ -125,12 +104,12 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
         <div class="bg-surface-container-lowest p-margin-xl rounded-xl shadow-soft border border-outline-variant">
           <h4 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-margin-lg">Estado de la Incidencia</h4>
           <div class="relative mb-margin-xl">
-            <select class="w-full appearance-none bg-surface-container-low border border-outline-variant rounded-lg px-margin-lg py-margin-md font-label-sm text-label-sm focus:ring-2 focus:ring-primary/20 outline-none cursor-pointer">
-              <option>Nueva</option>
-              <option selected="">En Progreso</option>
-              <option>Pendiente de Verificación</option>
-              <option>Resuelta</option>
-              <option>Cerrada</option>
+            <select id="detail-status-select" class="w-full appearance-none bg-surface-container-low border border-outline-variant rounded-lg px-margin-lg py-margin-md font-label-sm text-label-sm focus:ring-2 focus:ring-primary/20 outline-none cursor-pointer">
+              <option value="abierta">Abierta</option>
+              <option value="en_progreso">En Progreso</option>
+              <option value="pendiente_verificacion">Pendiente de Verificación</option>
+              <option value="resuelta">Resuelta</option>
+              <option value="cerrada">Cerrada</option>
             </select>
             <span class="material-symbols-outlined absolute right-margin-lg top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
           </div>
@@ -156,7 +135,7 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
           <div class="space-y-margin-lg">
             <div class="flex items-center justify-between">
               <span class="font-body-md text-body-md text-on-surface-variant">Categoría</span>
-              <span class="font-label-sm text-label-sm">Backend / DB</span>
+              <span id="detail-category" class="font-label-sm text-label-sm">-</span>
             </div>
             <div class="flex items-center justify-between">
               <span class="font-body-md text-body-md text-on-surface-variant">Fecha límite SLA</span>
@@ -164,15 +143,13 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
             </div>
             <div class="flex items-center justify-between">
               <span class="font-body-md text-body-md text-on-surface-variant">Impacto</span>
-              <span class="font-label-sm text-label-sm">Nivel Enterprise</span>
+              <span id="detail-impact" class="font-label-sm text-label-sm">-</span>
             </div>
           </div>
           <div class="mt-margin-xl pt-margin-lg border-t border-outline-variant">
             <p class="font-label-sm text-label-sm text-on-surface-variant mb-margin-md">Etiquetas</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded font-meta-xs text-meta-xs">Postgres</span>
-              <span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded font-meta-xs text-meta-xs">Latency</span>
-              <span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded font-meta-xs text-meta-xs">APAC</span>
+            <div id="detail-tags" class="flex flex-wrap gap-2">
+              <span class="font-meta-xs text-meta-xs text-on-surface-variant">Sin etiquetas</span>
             </div>
           </div>
         </div>
@@ -183,24 +160,13 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
             <h4 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Adjuntos</h4>
             <button class="text-primary hover:underline font-label-sm text-label-sm">Añadir</button>
           </div>
-          <div class="space-y-2">
-            <div class="flex items-center gap-margin-md p-2 hover:bg-surface-container-low rounded-lg border border-transparent hover:border-outline-variant transition-all cursor-pointer">
-              <span class="material-symbols-outlined text-outline">description</span>
-              <div class="flex-1 min-w-0">
-                <p class="font-label-sm text-label-sm truncate">latency_report_oct_24.pdf</p>
-                <p class="font-meta-xs text-meta-xs text-outline">1.2 MB</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-margin-md p-2 hover:bg-surface-container-low rounded-lg border border-transparent hover:border-outline-variant transition-all cursor-pointer">
-              <span class="material-symbols-outlined text-outline">image</span>
-              <div class="flex-1 min-w-0">
-                <p class="font-label-sm text-label-sm truncate">grafana_dashboard_screenshot.png</p>
-                <p class="font-meta-xs text-meta-xs text-outline">842 KB</p>
-              </div>
-            </div>
+          <div id="detail-attachments" class="space-y-2">
+            <p class="font-meta-xs text-meta-xs text-on-surface-variant">Sin adjuntos</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </main>
+
+<script src="js/ticket-detail.js"></script>
