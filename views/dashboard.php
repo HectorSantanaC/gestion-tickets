@@ -63,7 +63,7 @@ $pageTitle = 'Gestor de Incidencias - Panel';
     <div class="p-margin-lg border-b border-outline-variant flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface-container-lowest">
       <div class="flex items-center space-x-1 p-1 bg-surface-container rounded-lg w-fit">
         <button class="filter-btn px-4 py-1.5 rounded-md font-label-sm text-label-sm bg-surface shadow-sm text-primary" data-status="">Todas</button>
-        <button class="filter-btn px-4 py-1.5 rounded-md font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" data-status="nueva">Abiertas</button>
+        <button class="filter-btn px-4 py-1.5 rounded-md font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" data-status="abierta">Abiertas</button>
         <button class="filter-btn px-4 py-1.5 rounded-md font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" data-status="en_progreso">En Progreso</button>
         <button class="filter-btn px-4 py-1.5 rounded-md font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" data-status="cerrada">Cerradas</button>
       </div>
