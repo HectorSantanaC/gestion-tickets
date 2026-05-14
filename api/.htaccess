@@ -1,6 +1,4 @@
-<IfModule mod_php.c>
-    FallbackResource /gestion-tickets/api/index.php
-</IfModule>
-<IfModule mod_php8.c>
-    FallbackResource /gestion-tickets/api/index.php
-</IfModule>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]

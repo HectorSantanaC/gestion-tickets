@@ -12,7 +12,9 @@ require_once __DIR__ . '/../config/db.php';
 $uri = $_SERVER['REQUEST_URI'] ?? '/';
 
 // Detect base path (works in subdirectory or root)
-$basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$docRoot = rtrim(str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']), '/');
+$projectDir = str_replace('\\', '/', dirname(__DIR__));
+$basePath = str_replace($docRoot, '', $projectDir);
 $apiPath = '/api/';
 
 $path = substr($uri, strlen($basePath) + strlen($apiPath));
