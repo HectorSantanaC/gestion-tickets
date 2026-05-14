@@ -15,6 +15,9 @@ package.json
 package-lock.json
 node_modules/
 
+# Uploaded files
+uploads/
+
 # AI Skills
 .agents/
 skills-lock.json
