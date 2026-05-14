@@ -6,6 +6,7 @@ require_once __DIR__ . '/config/headers.php';
 require_once __DIR__ . '/helpers/response.php';
 require_once __DIR__ . '/helpers/pagination.php';
 require_once __DIR__ . '/helpers/validator.php';
+require_once __DIR__ . '/helpers/auth.php';
 require_once __DIR__ . '/../config/db.php';
 
 $uri = $_SERVER['REQUEST_URI'] ?? '/';
