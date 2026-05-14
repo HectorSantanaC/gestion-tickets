@@ -135,6 +135,24 @@ function renderAttachments(attachments) {
   }).join('');
 }
 
+async function uploadFile(file) {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('uploader_external_id', '1');
+
+  const response = await fetch(`${API_BASE}/tickets/${ticketId}/attachments`, {
+    method: 'POST',
+    body: formData
+  });
+
+  if (!response.ok) {
+    const data = await response.json();
+    throw new Error(data.error || 'Error al subir archivo');
+  }
+
+  return response.json();
+}
+
 function showError(message) {
   document.getElementById('detail-ticket-number').textContent = 'Error';
   document.getElementById('detail-title').textContent = message;
@@ -163,6 +181,27 @@ async function initTicketDetail() {
 
     renderComments(comments);
     renderAttachments(attachments);
+
+    document.getElementById('btn-attach-files')?.addEventListener('click', () => {
+      document.getElementById('detail-file-input')?.click();
+    });
+
+    document.getElementById('btn-add-attachment')?.addEventListener('click', () => {
+      document.getElementById('detail-file-input')?.click();
+    });
+
+    document.getElementById('detail-file-input')?.addEventListener('change', async function () {
+      if (this.files.length === 0) return;
+      try {
+        await uploadFile(this.files[0]);
+        const attachments = await loadAttachments(ticketId);
+        renderAttachments(attachments);
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error al subir archivo: ' + error.message);
+      }
+      this.value = '';
+    });
   } catch (error) {
     console.error('Error:', error);
     showError('Error al cargar el ticket');
