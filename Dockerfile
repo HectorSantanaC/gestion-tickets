@@ -13,7 +13,8 @@ RUN a2enmod rewrite
 COPY . /var/www/html/
 
 # Set permissions for uploads
-RUN chown -R www-data:www-data /var/www/html/uploads \
+RUN mkdir -p /var/www/html/uploads \
+    && chown -R www-data:www-data /var/www/html/uploads \
     && chmod -R 755 /var/www/html/uploads
 
 # Copy custom entrypoint
