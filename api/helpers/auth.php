@@ -9,10 +9,16 @@ function requireAuth(): void {
     }
 }
 
-function requireRole(string $role): void {
+function requireAnyRole(array $allowedRoles): void {
     requireAuth();
-    if ($_SESSION['user_role'] !== $role) {
+    $userRoles = array_map('trim', explode(',', $_SESSION['user_role'] ?? ''));
+    if (empty(array_intersect($userRoles, $allowedRoles))) {
         sendResponse(jsonError('Acceso denegado'), 403);
         exit;
     }
+}
+
+function userHasRole(string $role): bool {
+    $userRoles = array_map('trim', explode(',', $_SESSION['user_role'] ?? ''));
+    return in_array($role, $userRoles, true);
 }

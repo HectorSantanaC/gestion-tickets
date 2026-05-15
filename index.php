@@ -31,6 +31,16 @@ if ($page !== 'login' && empty($_SESSION['user_id'])) {
     exit;
 }
 
+// Role guard — solo roles permitidos (no pacientes)
+if ($page !== 'login') {
+    $allowedRoles = ['admin', 'administracion', 'gestor', 'medico'];
+    $userRoles = array_map('trim', explode(',', $_SESSION['user_role'] ?? ''));
+    if (empty(array_intersect($userRoles, $allowedRoles))) {
+        header('Location: ' . $basePath . '/?page=login');
+        exit;
+    }
+}
+
 // Set currentPage for navbar highlighting
 $currentPage = $page;
 

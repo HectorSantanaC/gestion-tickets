@@ -45,7 +45,7 @@ if ($httpCode !== 302 || !$phpsessid) {
 
 $cookieHeader = "Cookie: PHPSESSID=$phpsessid";
 
-$ch2 = curl_init('https://centro-medico-app-dvjk.onrender.com/api/usuarios.php');
+$ch2 = curl_init('https://centro-medico-app-dvjk.onrender.com/api/usuarios.php?email=' . urlencode($email));
 curl_setopt_array($ch2, [
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_TIMEOUT => 10,
@@ -58,29 +58,17 @@ if ($usersResponse === false) {
 }
 $httpCodeUsers = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
 
+if ($httpCodeUsers === 403) {
+    sendResponse(jsonError('Acceso no autorizado. Este usuario no tiene permisos para acceder al gestor de incidencias'), 403);
+}
+
 if ($httpCodeUsers !== 200) {
-  sendResponse(jsonError('Error al obtener datos del usuario'), 502);
+    sendResponse(jsonError('Error al obtener datos del usuario'), 502);
 }
 
 $usersData = json_decode($usersResponse, true);
 $users = $usersData['data'] ?? [];
-
-$totalPages = $usersData['pagination']['totalPages'] ?? 1;
-for ($page = 2; $page <= $totalPages; $page++) {
-    $chPage = curl_init('https://centro-medico-app-dvjk.onrender.com/api/usuarios.php?page=' . $page);
-    curl_setopt_array($chPage, [
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT => 10,
-        CURLOPT_HTTPHEADER => [$cookieHeader],
-        CURLOPT_SSL_VERIFYPEER => $verifySSL,
-    ]);
-    $pageResponse = curl_exec($chPage);
-    if ($pageResponse !== false) {
-        $pageData = json_decode($pageResponse, true);
-        $users = array_merge($users, $pageData['data'] ?? []);
-    }
-    curl_close($chPage);
-}
+curl_close($ch2);
 
 $user = null;
 foreach ($users as $u) {
@@ -94,6 +82,44 @@ if (!$user) {
   sendResponse(jsonError('Usuario no encontrado'), 404);
 }
 
+$allowedRoles = ['admin', 'administracion', 'gestor', 'medico'];
+$userRoles = array_map('trim', explode(',', $user['roles'] ?? ''));
+if (empty(array_intersect($userRoles, $allowedRoles))) {
+    sendResponse(jsonError('Acceso no autorizado. Este usuario no tiene permisos para acceder al gestor de incidencias'), 403);
+}
+
+$chAll = curl_init('https://centro-medico-app-dvjk.onrender.com/api/usuarios.php');
+curl_setopt_array($chAll, [
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_TIMEOUT => 10,
+  CURLOPT_HTTPHEADER => [$cookieHeader],
+  CURLOPT_SSL_VERIFYPEER => $verifySSL,
+]);
+$allResponse = curl_exec($chAll);
+$allUsers = [];
+if ($allResponse !== false) {
+    $allData = json_decode($allResponse, true);
+    $allUsers = $allData['data'] ?? [];
+
+    $totalPages = $allData['pagination']['totalPages'] ?? 1;
+    for ($page = 2; $page <= $totalPages; $page++) {
+        $chPage = curl_init('https://centro-medico-app-dvjk.onrender.com/api/usuarios.php?page=' . $page);
+        curl_setopt_array($chPage, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 10,
+            CURLOPT_HTTPHEADER => [$cookieHeader],
+            CURLOPT_SSL_VERIFYPEER => $verifySSL,
+        ]);
+        $pageResponse = curl_exec($chPage);
+        if ($pageResponse !== false) {
+            $pageData = json_decode($pageResponse, true);
+            $allUsers = array_merge($allUsers, $pageData['data'] ?? []);
+        }
+        curl_close($chPage);
+    }
+}
+curl_close($chAll);
+
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_email'] = $user['email'];
 $_SESSION['user_name'] = trim(($user['nombre'] ?? '') . ' ' . ($user['apellidos'] ?? ''));
@@ -101,7 +127,7 @@ $_SESSION['user_role'] = $user['roles'] ?? '';
 $_SESSION['user_first_name'] = $user['nombre'] ?? '';
 
 $_SESSION['users_map'] = [];
-foreach ($users as $u) {
+foreach ($allUsers as $u) {
     $fullName = trim(($u['nombre'] ?? '') . ' ' . ($u['apellidos'] ?? ''));
     $_SESSION['users_map'][$u['id']] = $fullName ?: 'Usuario #' . $u['id'];
 }
