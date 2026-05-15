@@ -71,6 +71,14 @@ $searchContainerClass = ($searchType === 'rounded')
     <button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
       <span class="material-symbols-outlined">help_outline</span>
     </button>
-    <img alt="User Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="<?php echo $profileImage; ?>" />
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-primary-fixed-dim flex items-center justify-center text-[12px] font-bold text-primary">
+        <?php echo mb_strtoupper(mb_substr($_SESSION['user_name'] ?? 'U', 0, 1)); ?>
+      </div>
+      <div class="hidden sm:block">
+        <p class="font-label-sm text-label-sm text-on-surface leading-tight">Hola <?php echo $_SESSION['user_first_name'] ?? ''; ?></p>
+        <p class="font-meta-xs text-meta-xs text-on-surface-variant leading-tight"><?php echo $_SESSION['user_role'] ?? ''; ?></p>
+      </div>
+    </div>
   </div>
 </header>

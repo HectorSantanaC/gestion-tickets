@@ -94,22 +94,11 @@ if (!$user) {
   sendResponse(jsonError('Usuario no encontrado'), 404);
 }
 
-$rolesJson = @file_get_contents('https://centro-medico-app-dvjk.onrender.com/api/roles.php');
-$rolesData = json_decode($rolesJson, true);
-$roles = $rolesData['data'] ?? [];
-
-$roleName = '';
-foreach ($roles as $r) {
-  if (($r['id'] ?? 0) === ($user['role_id'] ?? 0)) {
-    $roleName = $r['nombre'] ?? '';
-    break;
-  }
-}
-
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_email'] = $user['email'];
 $_SESSION['user_name'] = trim(($user['nombre'] ?? '') . ' ' . ($user['apellidos'] ?? ''));
-$_SESSION['user_role'] = $roleName;
+$_SESSION['user_role'] = $user['roles'] ?? '';
+$_SESSION['user_first_name'] = $user['nombre'] ?? '';
 
 $_SESSION['users_map'] = [];
 foreach ($users as $u) {
@@ -122,5 +111,5 @@ sendResponse(jsonSuccess([
   'id' => $user['id'],
   'name' => trim(($user['nombre'] ?? '') . ' ' . ($user['apellidos'] ?? '')),
   'email' => $user['email'],
-  'role' => $roleName,
+  'role' => $user['roles'] ?? '',
 ]));
