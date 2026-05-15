@@ -48,10 +48,19 @@ function isActive(string $page, string $current): string
   <div class="mt-auto px-3 space-y-1">
     <?php foreach ($bottomItems as $key => $item): ?>
       <a class="flex items-center px-3 py-3 font-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200"
-        href="<?php echo $item['href']; ?>">
+        href="<?php echo $item['href']; ?>"
+        <?php echo $key === 'logout' ? 'id="logout-btn"' : ''; ?>>
         <span class="material-symbols-outlined mr-3" data-icon="<?php echo $item['icon']; ?>"><?php echo $item['icon']; ?></span>
         <span><?php echo $item['label']; ?></span>
       </a>
     <?php endforeach; ?>
   </div>
 </aside>
+
+<script>
+document.getElementById('logout-btn')?.addEventListener('click', async (e) => {
+  e.preventDefault();
+  await fetch(`${API_BASE}/auth/logout`, { method: 'POST' });
+  window.location.href = '?page=login';
+});
+</script>
