@@ -61,6 +61,12 @@ if ($method === 'GET') {
             sendResponse(jsonError('Ticket no encontrado'), 404);
         }
 
+        $usersMap = $_SESSION['users_map'] ?? [];
+        $ticket['reporter_name'] = $usersMap[$ticket['reporter_external_id']] ?? 'Usuario #' . $ticket['reporter_external_id'];
+        $ticket['reporter_initial'] = mb_strtoupper(mb_substr($ticket['reporter_name'], 0, 1));
+        $ticket['assignee_name'] = $ticket['assignee_external_id'] ? ($usersMap[$ticket['assignee_external_id']] ?? 'Agente #' . $ticket['assignee_external_id']) : null;
+        $ticket['assignee_initial'] = $ticket['assignee_name'] ? mb_strtoupper(mb_substr($ticket['assignee_name'], 0, 1)) : null;
+
         sendResponse(jsonSuccess($ticket));
     }
 
@@ -136,6 +142,14 @@ if ($method === 'GET') {
         ');
         $tagsStmt->execute([':id' => $ticket['id']]);
         $ticket['tags'] = $tagsStmt->fetchAll();
+    }
+
+    $usersMap = $_SESSION['users_map'] ?? [];
+    foreach ($tickets as &$t) {
+        $t['reporter_name'] = $usersMap[$t['reporter_external_id']] ?? 'Usuario #' . $t['reporter_external_id'];
+        $t['reporter_initial'] = mb_strtoupper(mb_substr($t['reporter_name'], 0, 1));
+        $t['assignee_name'] = $t['assignee_external_id'] ? ($usersMap[$t['assignee_external_id']] ?? 'Agente #' . $t['assignee_external_id']) : null;
+        $t['assignee_initial'] = $t['assignee_name'] ? mb_strtoupper(mb_substr($t['assignee_name'], 0, 1)) : null;
     }
 
     $meta = buildPaginationMeta($pagination['page'], $pagination['per_page'], $total);

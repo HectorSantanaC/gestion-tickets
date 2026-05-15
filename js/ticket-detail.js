@@ -52,17 +52,13 @@ function renderTicket(ticket) {
   }
 
   const reporterEl = document.getElementById('detail-reporter');
-  const reporterName = ticket.reporter_external_id === USER_ID
-    ? USER_NAME
-    : `Usuario #${ticket.reporter_external_id}`;
-  reporterEl.querySelector('span:last-child').textContent = reporterName;
+  reporterEl.querySelector('.rounded-full').textContent = ticket.reporter_initial || '?';
+  reporterEl.querySelector('span:last-child').textContent = ticket.reporter_name;
 
   const assigneeEl = document.getElementById('detail-assignee');
   if (ticket.assignee_external_id) {
-    const assigneeName = ticket.assignee_external_id === USER_ID
-      ? USER_NAME
-      : `Agente #${ticket.assignee_external_id}`;
-    assigneeEl.querySelector('span:last-child').textContent = assigneeName;
+    assigneeEl.querySelector('.rounded-full').textContent = ticket.assignee_initial || '?';
+    assigneeEl.querySelector('span:last-child').textContent = ticket.assignee_name;
   } else {
     assigneeEl.querySelector('span:last-child').textContent = 'Sin asignar';
   }
@@ -107,7 +103,7 @@ function renderComments(comments) {
       </div>
       <div class="flex-1 bg-surface-container-low p-margin-lg rounded-xl">
         <div class="flex justify-between items-center mb-2">
-          <span class="font-label-sm text-label-sm text-primary">${comment.author_external_id === USER_ID ? USER_NAME : `Usuario #${comment.author_external_id}`}</span>
+          <span class="font-label-sm text-label-sm text-primary">${comment.author_name}</span>
           <span class="font-meta-xs text-meta-xs text-outline">${formatTimeAgo(comment.created_at)}</span>
         </div>
         <p class="font-body-md text-body-md text-on-surface-variant">${comment.content}</p>

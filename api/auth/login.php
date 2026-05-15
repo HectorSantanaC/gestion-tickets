@@ -45,7 +45,7 @@ if ($httpCode !== 302 || !$phpsessid) {
 
 $cookieHeader = "Cookie: PHPSESSID=$phpsessid";
 
-$ch2 = curl_init('https://centro-medico-app-dvjk.onrender.com/api/usuarios.php?email=' . urlencode($email));
+$ch2 = curl_init('https://centro-medico-app-dvjk.onrender.com/api/usuarios.php');
 curl_setopt_array($ch2, [
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_TIMEOUT => 10,
@@ -64,6 +64,23 @@ if ($httpCodeUsers !== 200) {
 
 $usersData = json_decode($usersResponse, true);
 $users = $usersData['data'] ?? [];
+
+$totalPages = $usersData['pagination']['totalPages'] ?? 1;
+for ($page = 2; $page <= $totalPages; $page++) {
+    $chPage = curl_init('https://centro-medico-app-dvjk.onrender.com/api/usuarios.php?page=' . $page);
+    curl_setopt_array($chPage, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 10,
+        CURLOPT_HTTPHEADER => [$cookieHeader],
+        CURLOPT_SSL_VERIFYPEER => $verifySSL,
+    ]);
+    $pageResponse = curl_exec($chPage);
+    if ($pageResponse !== false) {
+        $pageData = json_decode($pageResponse, true);
+        $users = array_merge($users, $pageData['data'] ?? []);
+    }
+    curl_close($chPage);
+}
 
 $user = null;
 foreach ($users as $u) {
@@ -93,6 +110,12 @@ $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_email'] = $user['email'];
 $_SESSION['user_name'] = trim(($user['nombre'] ?? '') . ' ' . ($user['apellidos'] ?? ''));
 $_SESSION['user_role'] = $roleName;
+
+$_SESSION['users_map'] = [];
+foreach ($users as $u) {
+    $fullName = trim(($u['nombre'] ?? '') . ' ' . ($u['apellidos'] ?? ''));
+    $_SESSION['users_map'][$u['id']] = $fullName ?: 'Usuario #' . $u['id'];
+}
 session_write_close();
 
 sendResponse(jsonSuccess([

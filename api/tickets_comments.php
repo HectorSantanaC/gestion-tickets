@@ -27,6 +27,12 @@ if ($method === 'GET') {
     $stmt->execute([':ticket_id' => $ticketId]);
     $comments = $stmt->fetchAll();
 
+    $usersMap = $_SESSION['users_map'] ?? [];
+    foreach ($comments as &$comment) {
+        $comment['author_name'] = $usersMap[$comment['author_external_id']] ?? 'Usuario #' . $comment['author_external_id'];
+        $comment['author_initial'] = mb_strtoupper(mb_substr($comment['author_name'], 0, 1));
+    }
+
     sendResponse(jsonSuccess($comments));
 }
 
@@ -60,6 +66,10 @@ if ($method === 'POST') {
         ':content' => $content,
     ]);
     $comment = $stmt->fetch();
+
+    $usersMap = $_SESSION['users_map'] ?? [];
+    $comment['author_name'] = $usersMap[$comment['author_external_id']] ?? 'Usuario #' . $comment['author_external_id'];
+    $comment['author_initial'] = mb_strtoupper(mb_substr($comment['author_name'], 0, 1));
 
     sendResponse(jsonSuccess($comment), 201);
 }
