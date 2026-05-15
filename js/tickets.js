@@ -53,7 +53,7 @@ function renderTickets(tickets) {
             </td>
             <td class="px-margin-lg py-4">
                 ${ticket.assignee_external_id
-      ? `<div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center text-[10px] font-bold text-secondary">A${ticket.assignee_external_id}</div><span class="font-body-md text-body-md">Agente ${ticket.assignee_external_id}</span></div>`
+      ? `<div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center text-[10px] font-bold text-secondary">${ticket.assignee_external_id === USER_ID ? USER_NAME.charAt(0).toUpperCase() : 'A' + ticket.assignee_external_id}</div><span class="font-body-md text-body-md">${ticket.assignee_external_id === USER_ID ? USER_NAME : 'Agente ' + ticket.assignee_external_id}</span></div>`
       : '<span class="font-body-md text-body-md text-on-surface-variant">Sin asignar</span>'
     }
             </td>

@@ -15,7 +15,7 @@ function renderTickets(tickets) {
             <td class="px-6 py-4 whitespace-nowrap font-label-sm text-primary">${ticket.ticket_number}</td>
             <td class="px-6 py-4">
                 <div class="font-body-md font-semibold text-on-surface">${ticket.subject}</div>
-                <div class="font-meta-xs text-on-surface-variant">Reportado por: ID ${ticket.reporter_external_id}</div>
+                <div class="font-meta-xs text-on-surface-variant">${ticket.reporter_external_id === USER_ID ? 'Reportado por: ' + USER_NAME : `Reportado por: ID ${ticket.reporter_external_id}`}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
                 ${getPriorityBadge(ticket.priority)}

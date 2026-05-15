@@ -52,11 +52,17 @@ function renderTicket(ticket) {
   }
 
   const reporterEl = document.getElementById('detail-reporter');
-  reporterEl.querySelector('span:last-child').textContent = `Usuario #${ticket.reporter_external_id}`;
+  const reporterName = ticket.reporter_external_id === USER_ID
+    ? USER_NAME
+    : `Usuario #${ticket.reporter_external_id}`;
+  reporterEl.querySelector('span:last-child').textContent = reporterName;
 
   const assigneeEl = document.getElementById('detail-assignee');
   if (ticket.assignee_external_id) {
-    assigneeEl.querySelector('span:last-child').textContent = `Agente #${ticket.assignee_external_id}`;
+    const assigneeName = ticket.assignee_external_id === USER_ID
+      ? USER_NAME
+      : `Agente #${ticket.assignee_external_id}`;
+    assigneeEl.querySelector('span:last-child').textContent = assigneeName;
   } else {
     assigneeEl.querySelector('span:last-child').textContent = 'Sin asignar';
   }
@@ -101,7 +107,7 @@ function renderComments(comments) {
       </div>
       <div class="flex-1 bg-surface-container-low p-margin-lg rounded-xl">
         <div class="flex justify-between items-center mb-2">
-          <span class="font-label-sm text-label-sm text-primary">Usuario #${comment.author_external_id}</span>
+          <span class="font-label-sm text-label-sm text-primary">${comment.author_external_id === USER_ID ? USER_NAME : `Usuario #${comment.author_external_id}`}</span>
           <span class="font-meta-xs text-meta-xs text-outline">${formatTimeAgo(comment.created_at)}</span>
         </div>
         <p class="font-body-md text-body-md text-on-surface-variant">${comment.content}</p>
@@ -138,7 +144,7 @@ function renderAttachments(attachments) {
 async function uploadFile(file) {
   const formData = new FormData();
   formData.append('file', file);
-  formData.append('uploader_external_id', '1');
+  formData.append('uploader_external_id', USER_ID);
 
   const response = await fetch(`${API_BASE}/tickets/${ticketId}/attachments`, {
     method: 'POST',

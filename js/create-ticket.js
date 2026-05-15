@@ -45,7 +45,7 @@ async function submitTicket(e) {
     description,
     priority,
     category_id: categoryId || null,
-    reporter_external_id: 1
+    reporter_external_id: USER_ID
   };
   
   try {
@@ -67,7 +67,7 @@ async function submitTicket(e) {
     for (const file of selectedFiles) {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('uploader_external_id', '1');
+      formData.append('uploader_external_id', USER_ID);
 
       const uploadResponse = await fetch(`${API_BASE}/tickets/${ticketId}/attachments`, {
         method: 'POST',

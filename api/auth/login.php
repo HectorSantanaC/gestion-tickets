@@ -91,13 +91,13 @@ foreach ($roles as $r) {
 
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_email'] = $user['email'];
-$_SESSION['user_name'] = $user['nombre'] ?? $user['email'];
+$_SESSION['user_name'] = trim(($user['nombre'] ?? '') . ' ' . ($user['apellidos'] ?? ''));
 $_SESSION['user_role'] = $roleName;
 session_write_close();
 
 sendResponse(jsonSuccess([
   'id' => $user['id'],
-  'name' => $user['nombre'] ?? $user['email'],
+  'name' => trim(($user['nombre'] ?? '') . ' ' . ($user['apellidos'] ?? '')),
   'email' => $user['email'],
   'role' => $roleName,
 ]));

@@ -24,7 +24,13 @@ $pageTitle = $pageTitle ?? 'Registro de incidencias';
   <link href="css/styles.css" rel="stylesheet" />
 
   <!-- API Base URL (dynamic for subdirectory or root) -->
-  <script>const API_BASE = '<?php echo $apiBase; ?>';</script>
+  <script>
+    const API_BASE = '<?php echo $apiBase; ?>';
+    const USER_ID = <?php echo $_SESSION['user_id'] ?? 'null'; ?>;
+    const USER_NAME = '<?php echo addslashes($_SESSION['user_name'] ?? ''); ?>';
+    const USER_EMAIL = '<?php echo addslashes($_SESSION['user_email'] ?? ''); ?>';
+    const USER_ROLE = '<?php echo addslashes($_SESSION['user_role'] ?? ''); ?>';
+  </script>
 
   <!-- Shared JavaScript Utilities -->
   <script src="js/utils.js"></script>
