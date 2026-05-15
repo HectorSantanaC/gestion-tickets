@@ -155,6 +155,33 @@ async function uploadFile(file) {
   return response.json();
 }
 
+async function submitComment() {
+  const textarea = document.getElementById('comment-textarea');
+  const content = textarea?.value.trim();
+  if (!content) return;
+
+  try {
+    const response = await fetch(`${API_BASE}/tickets/${ticketId}/comments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ author_external_id: USER_ID, content })
+    });
+
+    if (!response.ok) {
+      const data = await response.json();
+      alert(data.error || 'Error al publicar comentario');
+      return;
+    }
+
+    textarea.value = '';
+    const comments = await loadComments(ticketId);
+    renderComments(comments);
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error al publicar comentario');
+  }
+}
+
 function showError(message) {
   document.getElementById('detail-ticket-number').textContent = 'Error';
   document.getElementById('detail-title').textContent = message;
@@ -186,6 +213,11 @@ async function initTicketDetail() {
 
     document.getElementById('btn-attach-files')?.addEventListener('click', () => {
       document.getElementById('detail-file-input')?.click();
+    });
+
+    document.getElementById('btn-publish-comment')?.addEventListener('click', submitComment);
+    document.getElementById('comment-textarea')?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) submitComment();
     });
 
     document.getElementById('btn-add-attachment')?.addEventListener('click', () => {

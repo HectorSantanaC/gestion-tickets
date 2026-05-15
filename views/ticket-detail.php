@@ -89,10 +89,10 @@ $profileImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtTtmNJolhL
               <div class="w-[1px] bg-outline-variant mx-1"></div>
               <button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[20px]">image</span></button>
             </div>
-            <textarea class="w-full p-margin-xl border-none focus:ring-0 font-body-md text-body-md min-h-[120px] bg-surface-container-lowest" placeholder="Añadir un comentario o actualización..."></textarea>
+            <textarea id="comment-textarea" class="w-full p-margin-xl border-none focus:ring-0 font-body-md text-body-md min-h-[120px] bg-surface-container-lowest" placeholder="Añadir un comentario o actualización..."></textarea>
             <div class="bg-surface-container-lowest p-margin-md flex justify-end gap-margin-md">
               <button id="btn-attach-files" class="px-margin-lg py-margin-md font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-high rounded transition-colors">Adjuntar archivos</button>
-              <button class="px-margin-xl py-margin-md bg-primary text-on-primary font-label-sm text-label-sm rounded-lg hover:shadow-lg transition-all active:scale-95">Publicar Comentario</button>
+              <button id="btn-publish-comment" class="px-margin-xl py-margin-md bg-primary text-on-primary font-label-sm text-label-sm rounded-lg hover:shadow-lg transition-all active:scale-95">Publicar Comentario</button>
             </div>
           </div>
         </div>
